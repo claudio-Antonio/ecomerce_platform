@@ -4,8 +4,11 @@ import com.example.auth_service.controllers.dtos.AuthenticationDTO;
 import com.example.auth_service.controllers.dtos.LoginResponseDTO;
 import com.example.auth_service.controllers.dtos.RegisterDTO;
 import com.example.auth_service.domain.User;
+import com.example.auth_service.infra.redis.TokenBlackListService;
+import com.example.auth_service.infra.redis.UserCacheService;
 import com.example.auth_service.infra.security.TokenService;
 import com.example.auth_service.repositories.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +27,8 @@ public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final UserRepository repository;
     private final TokenService tokenService;
+    private final TokenBlackListService blacklistService;
+    private final UserCacheService userCacheService;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid AuthenticationDTO data) {
@@ -43,5 +48,26 @@ public class AuthenticationController {
         repository.save(newUser);
 
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(HttpServletRequest  request) {
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        String token = authHeader.replace("Bearer ", "");
+        String jti = tokenService.extractJti(token);
+        long remainingTtl = tokenService.extractRemainingTtlMillis(token);
+
+        // revoga o token na blacklist
+        blacklistService.revokeToken(jti, remainingTtl);
+
+        // remove do cache
+        String email = tokenService.validateToken(token);
+        if (email != null) userCacheService.evictUser(email);
+
+        return ResponseEntity.noContent().build();
     }
 }

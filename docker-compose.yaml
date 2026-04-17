@@ -13,6 +13,17 @@ services:
     networks:
       - private_network
 
+  redis_cache:
+    image: redis:7-alpine
+    container_name: redis_cache
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - private_network
+
 networks:
   private_network:
     driver: bridge
@@ -21,3 +32,4 @@ networks:
 
 volumes:
   postgres_data:
+  redis_data:
