@@ -1,9 +1,7 @@
 package com.example.auth_service.infra.security;
 
-import com.example.auth_service.domain.User;
-import com.example.auth_service.infra.redis.TokenBlackListService;
-import com.example.auth_service.infra.redis.UserCacheService;
-import com.example.auth_service.repositories.UserRepository;
+import com.example.auth_service.repositories.redis.BlacklistRepository;
+import com.example.auth_service.repositories.jpa.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,8 +21,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     private final TokenService tokenService;
     private final UserRepository userRepository;
-    private final TokenBlackListService blackListService;
-    private final UserCacheService userCacheService;
+    private final BlacklistRepository  blacklistRepository;
 
     /* Esse metodo vai rodar a cada request -> primeiro voce pega da request o token e comeca a trabalhar encima disso -> Se token == null, o filterChain.doFilter
     * chama o proximo filtro. -> Senao, pega o subject retornado por validateToken(token) e busca com o userRepository o usuario com base no email ->
@@ -40,16 +37,12 @@ public class SecurityFilter extends OncePerRequestFilter {
             if(subject != null) {
                 // Primeiro checa blacklist
                 String jti = tokenService.extractJti(token);
-                if(jti != null && blackListService.isRevoked(jti)) {
+                if(jti != null && blacklistRepository.existsById(jti)) {
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                     return;
                 }
                 // Segundo tenta cache antes de ir ao banco
-                UserDetails user = userCacheService.getFromCache(subject).orElseGet(() -> {
-                            User dbUser = (User) userRepository.findByEmail(subject);
-                            if(dbUser != null) userCacheService.cacheUser(dbUser);
-                            return dbUser;
-                        });
+                UserDetails user = userRepository.findByEmail(subject);
 
                 if(user != null) {
                     var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());

@@ -4,13 +4,15 @@ import com.example.auth_service.controllers.dtos.AuthenticationDTO;
 import com.example.auth_service.controllers.dtos.LoginResponseDTO;
 import com.example.auth_service.controllers.dtos.RegisterDTO;
 import com.example.auth_service.domain.User;
-import com.example.auth_service.infra.redis.TokenBlackListService;
-import com.example.auth_service.infra.redis.UserCacheService;
+import com.example.auth_service.infra.redis.BlacklistToken;
 import com.example.auth_service.infra.security.TokenService;
-import com.example.auth_service.repositories.UserRepository;
+import com.example.auth_service.kafka.producer.UserEventProducer;
+import com.example.auth_service.repositories.redis.BlacklistRepository;
+import com.example.auth_service.repositories.jpa.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.CacheManager;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,8 +29,9 @@ public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final UserRepository repository;
     private final TokenService tokenService;
-    private final TokenBlackListService blacklistService;
-    private final UserCacheService userCacheService;
+    private final BlacklistRepository  blacklistRepository;
+    private final CacheManager cacheManager;
+    private final UserEventProducer userEventProducer;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid AuthenticationDTO data) {
@@ -46,6 +49,7 @@ public class AuthenticationController {
         User newUser = new User(data.name(), data.email(), encryptedPassword, data.role());
 
         repository.save(newUser);
+        userEventProducer.publishUserRegistered(newUser);
 
         return ResponseEntity.ok().build();
     }
@@ -58,15 +62,18 @@ public class AuthenticationController {
         }
 
         String token = authHeader.replace("Bearer ", "");
+
         String jti = tokenService.extractJti(token);
-        long remainingTtl = tokenService.extractRemainingTtlMillis(token);
+        long ttlSeconds = tokenService.extractRemainingTtlMillis(token) / 1000;
 
-        // revoga o token na blacklist
-        blacklistService.revokeToken(jti, remainingTtl);
+        if(jti != null) {
+            blacklistRepository.save(new BlacklistToken(jti, ttlSeconds));
+        }
 
-        // remove do cache
         String email = tokenService.validateToken(token);
-        if (email != null) userCacheService.evictUser(email);
+        if(email != null) {
+            cacheManager.getCache("users").evict(email);
+        }
 
         return ResponseEntity.noContent().build();
     }

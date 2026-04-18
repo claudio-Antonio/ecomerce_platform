@@ -1,4 +1,4 @@
-package com.example.auth_service.repositories;
+package com.example.auth_service.repositories.jpa;
 
 import com.example.auth_service.domain.User;
 import org.springframework.cache.annotation.CacheEvict;
