@@ -1,27 +1,26 @@
 package com.example.order_service.services;
 
-import com.example.clients.InventoryClient;
+import com.example.order_service.clients.InventoryClient;
 import com.example.order_service.domain.Order;
 import com.example.order_service.domain.OrderItem;
 import com.example.order_service.dtos.requests.OrderItemRequest;
-import com.example.order_service.dtos.responses.OrderItemResponse;
+import com.example.order_service.infra.redis.ProductPriceCacheService;
 import com.example.order_service.repositories.OrderItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class OrderItemService {
     private final OrderItemRepository repository;
-    private final InventoryClient inventoryClient;
+    private final ProductPriceCacheService productPriceCacheService;
     private final OrderService orderService;
 
     public OrderItem create(OrderItemRequest data) {
-        Double currentPrice = inventoryClient.getPrice(data.productId());
+        Double currentPrice = productPriceCacheService.getPrice(data.productId());
         Order order = orderService.findById(data.orderId());
 
         OrderItem newItem = OrderItem.builder()
@@ -41,7 +40,7 @@ public class OrderItemService {
 
     public OrderItem update(UUID id, OrderItemRequest data) {
         OrderItem existing = findById(id);
-        Double currentPrice = inventoryClient.getPrice(data.productId());
+        Double currentPrice = productPriceCacheService.getPrice(data.productId());
 
         existing.setQuantity(data.quantity());
         existing.setProductId(data.productId());
