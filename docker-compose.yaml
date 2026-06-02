@@ -44,6 +44,20 @@ services:
     networks:
       - private_network
 
+  inventory_db:
+    image: postgres:16
+    container_name: inventory_db
+    environment:
+      - POSTGRES_DB=inventories
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5434:5432"
+    volumes:
+      - inventories_data:/var/lib/postgresql/data
+    networks:
+      - private_network
+
   redis_cache:
     image: redis:7-alpine
     container_name: redis_cache
@@ -64,4 +78,5 @@ networks:
 volumes:
   postgres_data:
   orders_data:
+  inventory_data:
   redis_data:

@@ -2,7 +2,10 @@ package com.example.inventory_service.services;
 
 import com.example.inventory_service.domain.Product;
 import com.example.inventory_service.dtos.requests.ProductRequest;
+import com.example.inventory_service.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -11,11 +14,10 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
-public class ProductRepository {
-    private final com.example.inventory_service.repositories.ProductRepository productRepository;
+public class ProductService {
+    private final ProductRepository productRepository;
     private final CategoryService categoryService;
 
-    /* Nao esquecer: implementar .movements() depois de criar StockService*/
     public Product create(ProductRequest data) {
         Product newProduct = Product.builder()
                 .name(data.name())
@@ -27,8 +29,8 @@ public class ProductRepository {
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
                 .category(categoryService.findById(data.categoryId()))
+                .reservedQuantity(0)
                 .build();
-
         return productRepository.save(newProduct);
     }
 
@@ -36,15 +38,18 @@ public class ProductRepository {
         return productRepository.findAll();
     }
 
+    @Cacheable("products")
     public Product findById(UUID id) {
         return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
+    @Cacheable("product-prices")
     public Double getPrice(UUID id) {
         Product product = findById(id);
         return product.getPrice();
     }
 
+    @CacheEvict(value = {"products", "product-prices"}, key = "#id")
     public Product update(UUID id, ProductRequest data) {
         Product product = findById(id);
         product.setName(data.name());
@@ -54,9 +59,11 @@ public class ProductRepository {
         product.setSku(data.sku());
         product.setActive(data.active());
         product.setCategory(categoryService.findById(data.categoryId()));
+        product.setUpdatedAt(LocalDateTime.now());
         return productRepository.save(product);
     }
 
+    @CacheEvict(value = {"products", "product-prices"}, key = "#id")
     public void delete(UUID id) {
         Product product = findById(id);
         productRepository.delete(product);

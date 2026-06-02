@@ -2,6 +2,7 @@ package com.example.inventory_service.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 @Entity
 @Table(name = "tb_category")
 public class Category {
@@ -25,6 +27,6 @@ public class Category {
     @Column(nullable = false)
     private LocalDateTime createdAt;
     @Column(nullable = false)
-    @OneToMany
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Product>  products;
 }

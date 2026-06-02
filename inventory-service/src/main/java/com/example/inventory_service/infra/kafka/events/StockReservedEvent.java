@@ -1,4 +1,6 @@
 package com.example.inventory_service.infra.kafka.events;
 
-public class StockReservedEvent {
+import java.time.LocalDateTime;
+
+public record StockReservedEvent(String eventId, String orderId, LocalDateTime ocurredAt) {
 }

@@ -1,4 +1,14 @@
 package com.example.inventory_service.repositories;
 
-public interface StockMovementRepository {
+import com.example.inventory_service.domain.StockMovement;
+import com.example.inventory_service.domain.enums.MovementType;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.UUID;
+
+@Repository
+public interface StockMovementRepository extends JpaRepository<StockMovement, UUID> {
+    List<StockMovement> findByOrderIdAndType(UUID orderId, MovementType type);
 }
