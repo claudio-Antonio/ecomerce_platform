@@ -3,9 +3,12 @@ services:
     image: confluentinc/cp-zookeeper:7.5.0
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
+    networks:
+      - private_network
 
   kafka:
     image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
     depends_on:
       - zookeeper
     ports:
@@ -15,6 +18,8 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - private_network
       
   users_db:
     image: postgres:16
@@ -54,7 +59,7 @@ services:
     ports:
       - "5434:5432"
     volumes:
-      - inventories_data:/var/lib/postgresql/data
+      - inventory_data:/var/lib/postgresql/data
     networks:
       - private_network
 
@@ -69,6 +74,88 @@ services:
     networks:
       - private_network
 
+  auth-service:
+    build: ./auth-service
+    container_name: auth-service
+    environment:
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - DB_HOST=users_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://users_db:5432/users
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=password
+    depends_on:
+      - kafka
+      - users_db
+    networks:
+      - private_network
+      - public_network
+
+  order-service:
+    build: ./order-service
+    container_name: order-service
+    environment:
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - DB_HOST=orders_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://orders_db:5432/orders
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=password
+    depends_on:
+      - kafka
+      - orders_db
+    networks:
+      - private_network
+      - public_network
+  
+  inventory-service:
+    build: ./inventory-service
+    container_name: inventory-service
+    environment:
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - DB_HOST=inventory_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://inventory_db:5432/inventories
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=password
+    depends_on:
+      - kafka
+      - inventory_db
+    networks:
+      - private_network
+      - public_network
+
+  ecommerce-frontend:
+    build: ./ecommerce-frontend
+    container_name: ecommerce-frontend
+    volumes:
+      - frontend_dist:/dist
+    healthcheck:
+      test: ["CMD", "test", "-f", "/dist/index.html"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks:
+      - public_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    volumes:
+      - frontend_dist:/usr/share/nginx/html:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "80:80"
+    depends_on:
+      ecommerce-frontend:
+        condition: service_healthy   # ← aguarda o frontend estar pronto
+      auth-service:
+        condition: service_started
+      order-service:
+        condition: service_started
+      inventory-service:
+        condition: service_started
+    networks:
+      - public_network
+      - private_network
+
 networks:
   private_network:
     driver: bridge
@@ -80,3 +167,4 @@ volumes:
   orders_data:
   inventory_data:
   redis_data:
+  frontend_dist:
