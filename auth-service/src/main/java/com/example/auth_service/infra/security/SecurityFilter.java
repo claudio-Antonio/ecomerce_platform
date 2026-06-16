@@ -32,9 +32,9 @@ public class SecurityFilter extends OncePerRequestFilter {
         var token = this.recovertoken(request);
 
         if(token != null) {
-            var subject = tokenService.validateToken(token);
+            var email = tokenService.validateToken(token);
 
-            if(subject != null) {
+            if(email != null) {
                 // Primeiro checa blacklist
                 String jti = tokenService.extractJti(token);
                 if(jti != null && blacklistRepository.existsById(jti)) {
@@ -42,7 +42,7 @@ public class SecurityFilter extends OncePerRequestFilter {
                     return;
                 }
                 // Segundo tenta cache antes de ir ao banco
-                UserDetails user = userRepository.findByEmail(subject);
+                UserDetails user = userRepository.findByEmail(email);
 
                 if(user != null) {
                     var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());

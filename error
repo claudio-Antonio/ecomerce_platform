@@ -1,0 +1,630 @@
+ading converter
+auth-service  | 2026-06-16T16:35:09.374Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetTime as reading converter
+auth-service  | 2026-06-16T16:35:09.375Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.377Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.377Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.377Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.377Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.378Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.378Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.378Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.378Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.378Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.378Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.378Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.378Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.378Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.379Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.379Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.379Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.381Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.382Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.390Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.393Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.String as reading converter
+auth-service  | 2026-06-16T16:35:09.394Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Number to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.394Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Number as reading converter
+auth-service  | 2026-06-16T16:35:09.394Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Enum to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.394Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Enum as reading converter
+auth-service  | 2026-06-16T16:35:09.394Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Boolean to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.394Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Boolean as reading converter
+auth-service  | 2026-06-16T16:35:09.395Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.395Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.util.Date as reading converter
+auth-service  | 2026-06-16T16:35:09.395Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.UUID to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.395Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.util.UUID as reading converter
+auth-service  | 2026-06-16T16:35:09.395Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.395Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.395Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.396Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.396Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.396Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.396Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZonedDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.396Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.ZonedDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.402Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.404Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.405Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.405Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.405Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.405Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.405Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.405Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.405Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.OffsetDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.405Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.406Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.OffsetTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.406Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetTime as reading converter
+auth-service  | 2026-06-16T16:35:09.406Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.406Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.406Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.406Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.407Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.407Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.407Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.407Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.407Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.407Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.407Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.408Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.408Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.408Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.410Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.411Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.411Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.415Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.416Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.430Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.431Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.String as reading converter
+auth-service  | 2026-06-16T16:35:09.431Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Number to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.431Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Number as reading converter
+auth-service  | 2026-06-16T16:35:09.432Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Enum to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.432Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Enum as reading converter
+auth-service  | 2026-06-16T16:35:09.432Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Boolean to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.432Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Boolean as reading converter
+auth-service  | 2026-06-16T16:35:09.432Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.432Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.util.Date as reading converter
+auth-service  | 2026-06-16T16:35:09.432Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.UUID to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.432Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.util.UUID as reading converter
+auth-service  | 2026-06-16T16:35:09.433Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.433Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.433Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.434Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.435Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.437Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.441Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZonedDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.444Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.ZonedDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.444Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.444Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.444Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.OffsetDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.OffsetTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetTime as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.445Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.446Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.446Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.446Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.554Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.556Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.String as reading converter
+auth-service  | 2026-06-16T16:35:09.556Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Number to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.556Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Number as reading converter
+auth-service  | 2026-06-16T16:35:09.556Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Enum to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.556Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Enum as reading converter
+auth-service  | 2026-06-16T16:35:09.556Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Boolean to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Boolean as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.util.Date as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.UUID to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.util.UUID as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZonedDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.ZonedDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.557Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.560Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.560Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.560Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.560Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.560Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.560Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.OffsetDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.OffsetTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetTime as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.561Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.563Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.564Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.String as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Number to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Number as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Enum to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Enum as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Boolean to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Boolean as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.util.Date as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.UUID to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.util.UUID as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZonedDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.ZonedDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.565Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.566Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.566Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.566Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.566Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.566Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.566Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.566Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.OffsetDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.566Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.566Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.OffsetTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.566Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetTime as reading converter
+auth-service  | 2026-06-16T16:35:09.568Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.569Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.569Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.569Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.569Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.569Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.569Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.569Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.570Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.591Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.591Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.String as reading converter
+auth-service  | 2026-06-16T16:35:09.592Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Number to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.592Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Number as reading converter
+auth-service  | 2026-06-16T16:35:09.592Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Enum to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.592Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Enum as reading converter
+auth-service  | 2026-06-16T16:35:09.592Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.Boolean to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.592Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.lang.Boolean as reading converter
+auth-service  | 2026-06-16T16:35:09.592Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.util.Date as reading converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.UUID to class [B as writing converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.util.UUID as reading converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZonedDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.ZonedDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.593Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.596Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.597Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.597Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.597Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.597Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.597Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.597Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.597Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.OffsetDateTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.598Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.598Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.OffsetTime to class [B as reading converter
+auth-service  | 2026-06-16T16:35:09.598Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class [B to class java.time.OffsetTime as reading converter
+auth-service  | 2026-06-16T16:35:09.598Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.598Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.598Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.598Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDate to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.598Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.LocalTime as reading converter
+auth-service  | 2026-06-16T16:35:09.599Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalTime to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.599Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.util.Date to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.599Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.util.Date as writing converter
+auth-service  | 2026-06-16T16:35:09.599Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.LocalDateTime to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.599Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Instant to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.599Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.ZoneId to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.599Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.ZoneId as reading converter
+auth-service  | 2026-06-16T16:35:09.599Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Duration to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.599Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Duration as reading converter
+auth-service  | 2026-06-16T16:35:09.599Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.time.Period to class java.lang.String as writing converter
+auth-service  | 2026-06-16T16:35:09.600Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Period as reading converter
+auth-service  | 2026-06-16T16:35:09.600Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDate as reading converter
+auth-service  | 2026-06-16T16:35:09.600Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.LocalDateTime as reading converter
+auth-service  | 2026-06-16T16:35:09.600Z DEBUG 1 --- [auth-service] [           main] o.s.data.convert.CustomConversions       : Adding converter from class java.lang.String to class java.time.Instant as reading converter
+auth-service  | 2026-06-16T16:35:09.705Z DEBUG 1 --- [auth-service] [           main] o.s.d.r.c.s.RepositoryFactorySupport     : Initializing repository instance for com.example.auth_service.repositories.redis.BlacklistRepository…
+auth-service  | 2026-06-16T16:35:09.733Z DEBUG 1 --- [auth-service] [           main] o.s.d.r.c.s.RepositoryFactorySupport     : Finished creation of repository instance for com.example.auth_service.repositories.redis.BlacklistRepository.
+auth-service  | 2026-06-16T16:35:10.339Z TRACE 1 --- [auth-service] [           main] o.s.c.a.AnnotationCacheOperationSource   : Adding cacheable method 'loadUserByUsername' with operations: [Builder[public org.springframework.security.core.userdetails.UserDetails com.example.auth_service.services.AuthorizationService.loadUserByUsername(java.lang.String) throws org.springframework.security.core.userdetails.UsernameNotFoundException] caches=[users] | key='#username' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='#result == null' | sync='false']
+auth-service  | 2026-06-16T16:35:10.470Z  INFO 1 --- [auth-service] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name authorizationService
+auth-service  | 2026-06-16T16:35:10.922Z  WARN 1 --- [auth-service] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+auth-service  | 2026-06-16T16:35:12.439Z  INFO 1 --- [auth-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+auth-service  | 2026-06-16T16:35:13.043Z DEBUG 1 --- [auth-service] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, SecurityFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+auth-service  | 2026-06-16T16:35:15.282Z  INFO 1 --- [auth-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+auth-service  | 2026-06-16T16:35:15.288Z DEBUG 1 --- [auth-service] [           main] o.s.d.r.l.RedisMessageListenerContainer  : Starting RedisMessageListenerContainer...
+auth-service  | 2026-06-16T16:35:15.292Z DEBUG 1 --- [auth-service] [           main] o.s.d.r.l.RedisMessageListenerContainer  : Postpone listening for Redis messages until actual listeners are added
+auth-service  | 2026-06-16T16:35:15.411Z  INFO 1 --- [auth-service] [           main] c.e.auth_service.AuthServiceApplication  : Started AuthServiceApplication in 31.262 seconds (process running for 32.959)
+auth-service  | 2026-06-16T16:36:12.341Z  INFO 1 --- [auth-service] [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+auth-service  | 2026-06-16T16:36:12.342Z  INFO 1 --- [auth-service] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+auth-service  | 2026-06-16T16:36:12.346Z  INFO 1 --- [auth-service] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+auth-service  | 2026-06-16T16:36:12.404Z DEBUG 1 --- [auth-service] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/login
+auth-service  | 2026-06-16T16:36:12.436Z DEBUG 1 --- [auth-service] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+auth-service  | 2026-06-16T16:36:12.444Z DEBUG 1 --- [auth-service] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/login
+auth-service  | 2026-06-16T16:36:12.696Z DEBUG 1 --- [auth-service] [nio-8081-exec-1] .s.a.DefaultAuthenticationEventPublisher : No event was found for the exception org.springframework.security.authentication.InternalAuthenticationServiceException
+auth-service  | 2026-06-16T16:36:12.696Z DEBUG 1 --- [auth-service] [nio-8081-exec-1] o.s.s.authentication.ProviderManager     : Authentication service failed internally for user 'mario@gmail.com'
+auth-service  | 
+auth-service  | org.springframework.security.authentication.InternalAuthenticationServiceException: Null key returned for cache operation [Builder[public org.springframework.security.core.userdetails.UserDetails com.example.auth_service.services.AuthorizationService.loadUserByUsername(java.lang.String) throws org.springframework.security.core.userdetails.UsernameNotFoundException] caches=[users] | key='#username' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='#result == null' | sync='false']. If you are using named parameters, ensure that the compiler uses the '-parameters' flag.
+auth-service  |         at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:136) ~[spring-security-core-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:136) ~[spring-security-core-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182) ~[spring-security-core-6.5.9.jar!/:6.5.9]
+auth-service  |         at com.example.auth_service.controllers.AuthenticationController.login(AuthenticationController.java:39) ~[!/:0.0.1-SNAPSHOT]
+auth-service  |         at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+auth-service  |         at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+auth-service  |         at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+auth-service  |         at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+auth-service  |         at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:490) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:351) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:83) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:129) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at com.example.auth_service.infra.security.SecurityFilter.doFilterInternal(SecurityFilter.java:53) ~[!/:0.0.1-SNAPSHOT]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:334) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:225) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319) ~[spring-security-config-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240) ~[spring-security-config-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1775) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at java.base/java.lang.Thread.run(Unknown Source) ~[na:na]
+auth-service  | Caused by: java.lang.IllegalArgumentException: Null key returned for cache operation [Builder[public org.springframework.security.core.userdetails.UserDetails com.example.auth_service.services.AuthorizationService.loadUserByUsername(java.lang.String) throws org.springframework.security.core.userdetails.UsernameNotFoundException] caches=[users] | key='#username' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='#result == null' | sync='false']. If you are using named parameters, ensure that the compiler uses the '-parameters' flag.
+auth-service  |         at org.springframework.cache.interceptor.CacheAspectSupport.generateKey(CacheAspectSupport.java:764) ~[spring-context-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.cache.interceptor.CacheAspectSupport.findCachedValue(CacheAspectSupport.java:522) ~[spring-context-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:446) ~[spring-context-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:410) ~[spring-context-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.cache.interceptor.CacheInterceptor.invoke(CacheInterceptor.java:65) ~[spring-context-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.17.jar!/:6.2.17]
+auth-service  |         at com.example.auth_service.services.AuthorizationService$$SpringCGLIB$$0.loadUserByUsername(<generated>) ~[!/:0.0.1-SNAPSHOT]
+auth-service  |         at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:121) ~[spring-security-core-6.5.9.jar!/:6.5.9]
+auth-service  |         ... 146 common frames omitted
+auth-service  | 
+auth-service  | 2026-06-16T16:36:12.713Z DEBUG 1 --- [auth-service] [nio-8081-exec-1] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+auth-service  | 2026-06-16T16:36:12.727Z DEBUG 1 --- [auth-service] [nio-8081-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /error
+auth-service  | 2026-06-16T16:36:12.729Z DEBUG 1 --- [auth-service] [nio-8081-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+auth-service  | 2026-06-16T16:36:12.735Z DEBUG 1 --- [auth-service] [nio-8081-exec-1] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+auth-service  | 2026-06-16T16:36:15.186Z DEBUG 1 --- [auth-service] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/login
+auth-service  | 2026-06-16T16:36:15.188Z DEBUG 1 --- [auth-service] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+auth-service  | 2026-06-16T16:36:15.190Z DEBUG 1 --- [auth-service] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/login
+auth-service  | 2026-06-16T16:36:15.195Z DEBUG 1 --- [auth-service] [nio-8081-exec-2] .s.a.DefaultAuthenticationEventPublisher : No event was found for the exception org.springframework.security.authentication.InternalAuthenticationServiceException
+auth-service  | 2026-06-16T16:36:15.195Z DEBUG 1 --- [auth-service] [nio-8081-exec-2] o.s.s.authentication.ProviderManager     : Authentication service failed internally for user 'mario@gmail.com'
+auth-service  | 
+auth-service  | org.springframework.security.authentication.InternalAuthenticationServiceException: Null key returned for cache operation [Builder[public org.springframework.security.core.userdetails.UserDetails com.example.auth_service.services.AuthorizationService.loadUserByUsername(java.lang.String) throws org.springframework.security.core.userdetails.UsernameNotFoundException] caches=[users] | key='#username' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='#result == null' | sync='false']. If you are using named parameters, ensure that the compiler uses the '-parameters' flag.
+auth-service  |         at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:136) ~[spring-security-core-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:136) ~[spring-security-core-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182) ~[spring-security-core-6.5.9.jar!/:6.5.9]
+auth-service  |         at com.example.auth_service.controllers.AuthenticationController.login(AuthenticationController.java:39) ~[!/:0.0.1-SNAPSHOT]
+auth-service  |         at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+auth-service  |         at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+auth-service  |         at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+auth-service  |         at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+auth-service  |         at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:490) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:351) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:83) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:129) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at com.example.auth_service.infra.security.SecurityFilter.doFilterInternal(SecurityFilter.java:53) ~[!/:0.0.1-SNAPSHOT]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:228) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:241) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:334) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:225) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:138) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319) ~[spring-security-config-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267) ~[spring-webmvc-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240) ~[spring-security-config-6.5.9.jar!/:6.5.9]
+auth-service  |         at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1775) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.53.jar!/:na]
+auth-service  |         at java.base/java.lang.Thread.run(Unknown Source) ~[na:na]
+auth-service  | Caused by: java.lang.IllegalArgumentException: Null key returned for cache operation [Builder[public org.springframework.security.core.userdetails.UserDetails com.example.auth_service.services.AuthorizationService.loadUserByUsername(java.lang.String) throws org.springframework.security.core.userdetails.UsernameNotFoundException] caches=[users] | key='#username' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='#result == null' | sync='false']. If you are using named parameters, ensure that the compiler uses the '-parameters' flag.
+auth-service  |         at org.springframework.cache.interceptor.CacheAspectSupport.generateKey(CacheAspectSupport.java:764) ~[spring-context-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.cache.interceptor.CacheAspectSupport.findCachedValue(CacheAspectSupport.java:522) ~[spring-context-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:446) ~[spring-context-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.cache.interceptor.CacheAspectSupport.execute(CacheAspectSupport.java:410) ~[spring-context-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.cache.interceptor.CacheInterceptor.invoke(CacheInterceptor.java:65) ~[spring-context-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.17.jar!/:6.2.17]
+auth-service  |         at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728) ~[spring-aop-6.2.17.jar!/:6.2.17]
+auth-service  |         at com.example.auth_service.services.AuthorizationService$$SpringCGLIB$$0.loadUserByUsername(<generated>) ~[!/:0.0.1-SNAPSHOT]
+auth-service  |         at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:121) ~[spring-security-core-6.5.9.jar!/:6.5.9]
+auth-service  |         ... 146 common frames omitted
+auth-service  | 
+auth-service  | 2026-06-16T16:36:15.203Z DEBUG 1 --- [auth-service] [nio-8081-exec-2] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+auth-service  | 2026-06-16T16:36:15.207Z DEBUG 1 --- [auth-service] [nio-8081-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /error
+auth-service  | 2026-06-16T16:36:15.210Z DEBUG 1 --- [auth-service] [nio-8081-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+auth-service  | 2026-06-16T16:36:15.211Z DEBUG 1 --- [auth-service] [nio-8081-exec-2] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access

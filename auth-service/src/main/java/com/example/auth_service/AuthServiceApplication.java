@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-@EnableCaching
+
 @SpringBootApplication
+@EnableCaching
 @EnableAsync
 public class AuthServiceApplication {
 
