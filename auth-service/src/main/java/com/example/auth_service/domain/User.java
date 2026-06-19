@@ -35,6 +35,7 @@ public class User implements Serializable, UserDetails {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     public User(String name, String email, String password, Role role) {

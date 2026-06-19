@@ -16,7 +16,10 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092,EXTERNAL://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,EXTERNAL://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     networks:
       - private_network
@@ -85,6 +88,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://users_db:5432/users
       - SPRING_DATASOURCE_USERNAME=user
       - SPRING_DATASOURCE_PASSWORD=password
+      - JWT_SECRET=UmaChaveSecretaMuitoLongaeSeguraComLetraseNumeros123!
     depends_on:
       - kafka
       - users_db
@@ -101,6 +105,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://orders_db:5432/orders
       - SPRING_DATASOURCE_USERNAME=user
       - SPRING_DATASOURCE_PASSWORD=password
+      - JWT_SECRET=UmaChaveSecretaMuitoLongaeSeguraComLetraseNumeros123!
     depends_on:
       - kafka
       - orders_db
@@ -117,6 +122,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://inventory_db:5432/inventories
       - SPRING_DATASOURCE_USERNAME=user
       - SPRING_DATASOURCE_PASSWORD=password
+      - JWT_SECRET=UmaChaveSecretaMuitoLongaeSeguraComLetraseNumeros123!
     depends_on:
       - kafka
       - inventory_db
@@ -147,7 +153,7 @@ services:
       - "80:80"
     depends_on:
       ecommerce-frontend:
-        condition: service_healthy   # ← aguarda o frontend estar pronto
+        condition: service_completed_successfully
       auth-service:
         condition: service_started
       order-service:

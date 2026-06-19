@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProductService, CategoryService } from '../../../core/services/api.services';
 import { ProductResponse, CategoryResponse } from '../../../models/index';
+import { switchMap, of } from 'rxjs';
 
 @Component({
   selector: 'app-admin-products',
@@ -22,7 +23,6 @@ import { ProductResponse, CategoryResponse } from '../../../models/index';
         </button>
       </div>
 
-      <!-- FORMULÁRIO MODAL -->
       @if (showForm()) {
         <div class="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
           <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 w-full max-w-lg
@@ -50,7 +50,7 @@ import { ProductResponse, CategoryResponse } from '../../../models/index';
               <div class="grid grid-cols-2 gap-4">
                 <div>
                   <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">Preço (R$)</label>
-                  <input formControlName="price" type="number" step="0.01" min="0"
+                  <input formControlName="price" type="number" step="0.01" min="0.01"
                     class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
                            focus:outline-none focus:border-amber-400 transition-all" />
                 </div>
@@ -71,14 +71,19 @@ import { ProductResponse, CategoryResponse } from '../../../models/index';
 
               <div>
                 <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">Categoria</label>
-                <select formControlName="categoryId"
+                <input formControlName="category" type="text"
+                  placeholder="Digite o nome (ex: Livros) — criada automaticamente se não existir"
+                  list="categorias-existentes"
                   class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
-                         focus:outline-none focus:border-amber-400 transition-all">
-                  <option value="">Selecione...</option>
+                         focus:outline-none focus:border-amber-400 transition-all" />
+                <datalist id="categorias-existentes">
                   @for (cat of categories(); track cat.id) {
-                    <option [value]="cat.id">{{ cat.name }}</option>
+                    <option [value]="cat.name"></option>
                   }
-                </select>
+                </datalist>
+                @if (categoryHint()) {
+                  <p class="text-xs text-amber-400/80 mt-1.5">{{ categoryHint() }}</p>
+                }
               </div>
 
               <div class="flex items-center gap-3">
@@ -110,7 +115,6 @@ import { ProductResponse, CategoryResponse } from '../../../models/index';
         </div>
       }
 
-      <!-- TABELA -->
       @if (loading()) {
         <div class="space-y-3">
           @for (n of [1,2,3,4]; track n) {
@@ -188,13 +192,14 @@ import { ProductResponse, CategoryResponse } from '../../../models/index';
   `
 })
 export class AdminProductsComponent implements OnInit {
-  products   = signal<ProductResponse[]>([]);
-  categories = signal<CategoryResponse[]>([]);
-  loading    = signal(true);
-  showForm   = signal(false);
-  editingId  = signal<string | null>(null);
-  formLoading = signal(false);
-  formError  = signal('');
+  products      = signal<ProductResponse[]>([]);
+  categories    = signal<CategoryResponse[]>([]);
+  loading       = signal(true);
+  showForm      = signal(false);
+  editingId     = signal<string | null>(null);
+  formLoading   = signal(false);
+  formError     = signal('');
+  categoryHint  = signal('');
   form: FormGroup;
 
   constructor(
@@ -205,18 +210,27 @@ export class AdminProductsComponent implements OnInit {
     this.form = this.fb.group({
       name:          ['', Validators.required],
       description:   ['', Validators.required],
-      price:         [0, [Validators.required, Validators.min(0.01)]],
+      price:         [0.01, [Validators.required, Validators.min(0.01)]],
       stockQuantity: [0, [Validators.required, Validators.min(0)]],
       sku:           ['', Validators.required],
-      categoryId:    ['', Validators.required],
+      category:      ['', Validators.required],
       active:        [true]
     });
   }
 
   ngOnInit(): void {
     this.loadProducts();
-    this.categoryService.findAll().subscribe({
-      next: cats => this.categories.set(cats)
+    this.loadCategories();
+
+    // mostra dica em tempo real se a categoria digitada é nova
+    this.form.get('category')?.valueChanges.subscribe(value => {
+      const typed = (value ?? '').trim().toLowerCase();
+      if (!typed) { this.categoryHint.set(''); return; }
+
+      const exists = this.categories().some(c => c.name.toLowerCase() === typed);
+      this.categoryHint.set(
+        exists ? '' : `Categoria nova — será criada automaticamente ao salvar.`
+      );
     });
   }
 
@@ -228,10 +242,17 @@ export class AdminProductsComponent implements OnInit {
     });
   }
 
+  loadCategories(): void {
+    this.categoryService.findAll().subscribe({
+      next: cats => this.categories.set(cats)
+    });
+  }
+
   openForm(): void {
     this.editingId.set(null);
-    this.form.reset({ active: true, price: 0, stockQuantity: 0 });
+    this.form.reset({ active: true, price: 0.01, stockQuantity: 0 });
     this.formError.set('');
+    this.categoryHint.set('');
     this.showForm.set(true);
   }
 
@@ -240,9 +261,10 @@ export class AdminProductsComponent implements OnInit {
     this.form.patchValue({
       name: p.name, description: p.description,
       price: p.price, stockQuantity: p.availableQuantity,
-      sku: p.sku, active: p.active, categoryId: ''
+      sku: p.sku, active: p.active, category: p.categoryName ?? ''
     });
     this.formError.set('');
+    this.categoryHint.set('');
     this.showForm.set(true);
   }
 
@@ -251,19 +273,51 @@ export class AdminProductsComponent implements OnInit {
     this.editingId.set(null);
   }
 
+  /**
+   * Resolve o nome de categoria digitado para um categoryId real.
+   * Se já existir uma categoria com esse nome (case-insensitive), reusa o ID.
+   * Se não existir, cria a categoria na hora e usa o ID retornado.
+   */
+  private resolveCategoryId(categoryName: string) {
+    const typed = categoryName.trim();
+    const existing = this.categories().find(
+      c => c.name.toLowerCase() === typed.toLowerCase()
+    );
+
+    if (existing) {
+      return of(existing.id);
+    }
+
+    return this.categoryService
+      .create({ name: typed, description: `Categoria criada automaticamente: ${typed}` })
+      .pipe(switchMap(created => of(created.id)));
+  }
+
   submit(): void {
     if (this.form.invalid) return;
     this.formLoading.set(true);
     this.formError.set('');
 
-    const data = this.form.value;
-    const request$ = this.editingId()
-      ? this.productService.update(this.editingId()!, data)
-      : this.productService.create(data);
+    const { category, ...rest } = this.form.value;
 
-    request$.subscribe({
-      next: () => { this.closeForm(); this.loadProducts(); this.formLoading.set(false); },
-      error: () => { this.formError.set('Erro ao salvar produto.'); this.formLoading.set(false); }
+    this.resolveCategoryId(category).pipe(
+      switchMap(categoryId => {
+        const payload = { ...rest, categoryId };
+        return this.editingId()
+          ? this.productService.update(this.editingId()!, payload)
+          : this.productService.create(payload);
+      })
+    ).subscribe({
+      next: () => {
+        this.closeForm();
+        this.loadProducts();
+        this.loadCategories();
+        this.formLoading.set(false);
+      },
+      error: () => {
+        this.formError.set('Erro ao salvar produto.');
+        this.formLoading.set(false);
+      }
     });
   }
 

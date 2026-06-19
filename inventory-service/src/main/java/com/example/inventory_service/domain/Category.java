@@ -26,7 +26,6 @@ public class Category {
     private String description;
     @Column(nullable = false)
     private LocalDateTime createdAt;
-    @Column(nullable = false)
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Product>  products;
 }

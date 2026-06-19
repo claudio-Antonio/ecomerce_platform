@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class AuthorizationService implements UserDetailsService {
     private final UserRepository repository;
 
-    @Cacheable(cacheNames = "users", key = "'user:' + #username", unless = "#result == null")
+    @Cacheable(cacheNames = "users", key = "'user:' + #email", unless = "#result == null")
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         UserDetails user = repository.findByEmail(email);
         if (user == null) throw new UsernameNotFoundException("User not found: " + email);

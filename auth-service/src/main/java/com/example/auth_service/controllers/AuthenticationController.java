@@ -72,7 +72,7 @@ public class AuthenticationController {
 
         String email = tokenService.validateToken(token);
         if(email != null) {
-            cacheManager.getCache("users").evict(email);
+            cacheManager.getCache("users").evict("user:" + email);
         }
 
         return ResponseEntity.noContent().build();

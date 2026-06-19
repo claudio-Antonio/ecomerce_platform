@@ -10,4 +10,4 @@ FROM alpine:latest
 WORKDIR /app
 COPY --from=build /app/dist/marketplace ./dist/marketplace
 # mantém o container vivo para o volume ser preenchido
-CMD ["sh", "-c", "cp -r /app/dist/marketplace/* /dist && echo 'Frontend copiado' && tail -f /dev/null"]
+CMD ["sh", "-c", "cp -r /app/dist/marketplace/* /dist"]

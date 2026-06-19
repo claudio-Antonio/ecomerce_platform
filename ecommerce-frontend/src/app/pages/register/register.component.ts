@@ -47,6 +47,7 @@ import { AuthService } from '../../core/services/auth.service';
                      focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 transition-all text-sm">
               <option value="CUSTOMER">Comprador</option>
               <option value="SELLER">Vendedor</option>
+              <option value="ADMIN">Administrador</option>
             </select>
           </div>
 
