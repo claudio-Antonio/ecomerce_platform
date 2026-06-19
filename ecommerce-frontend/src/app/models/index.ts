@@ -33,6 +33,7 @@ export interface ProductResponse {
   categoryName: string | null;
   active: boolean;
   updatedAt: string;
+  imageUrl : string | null;
 }
 
 export interface ProductRequest {
@@ -43,6 +44,7 @@ export interface ProductRequest {
   sku: string;
   active: boolean;
   categoryId: string;
+  imageUrl: string;
 }
 
 // ─── CATEGORIES ───────────────────────────────────────────────

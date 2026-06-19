@@ -86,6 +86,13 @@ import { switchMap, of } from 'rxjs';
                 }
               </div>
 
+              <div>
+                <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">URL da imagem</label>
+                <input formControlName="imageUrl" type="url" placeholder="https://exemplo.com/imagem.jpg"
+                  class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
+                        focus:outline-none focus:border-amber-400 transition-all" />
+              </div>
+
               <div class="flex items-center gap-3">
                 <input formControlName="active" type="checkbox" id="active"
                   class="w-4 h-4 rounded accent-amber-400" />
@@ -214,7 +221,8 @@ export class AdminProductsComponent implements OnInit {
       stockQuantity: [0, [Validators.required, Validators.min(0)]],
       sku:           ['', Validators.required],
       category:      ['', Validators.required],
-      active:        [true]
+      active:        [true],
+      imageUrl: ['', Validators.required]
     });
   }
 

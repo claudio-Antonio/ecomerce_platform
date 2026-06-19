@@ -39,7 +39,7 @@ public class StockService {
         for(var item : items) {
             Product product = productService.findById(UUID.fromString(item.productId()));
             product.setReservedQuantity(product.getReservedQuantity() + item.quantity());
-            productService.create(new ProductRequest(product.getName(), product.getDescription(), product.getPrice(), product.getStockQuantity(), product.getSku(), product.getActive(), product.getCategory().getId()));
+            productService.create(new ProductRequest(product.getName(), product.getDescription(), product.getPrice(), product.getStockQuantity(), product.getSku(), product.getActive(), product.getCategory().getId(), product.getImageUrl()));
 
             StockMovement movement = new StockMovement();
             movement.setType(MovementType.RESERVED);
@@ -61,7 +61,7 @@ public class StockService {
         for(StockMovement reservation : reservations) {
             Product product = reservation.getProduct();
             product.setReservedQuantity(product.getReservedQuantity() - reservation.getQuantity());
-            productService.create(new ProductRequest(product.getName(), product.getDescription(), product.getPrice(), product.getStockQuantity(), product.getSku(), product.getActive(), product.getCategory().getId()));
+            productService.create(new ProductRequest(product.getName(), product.getDescription(), product.getPrice(), product.getStockQuantity(), product.getSku(), product.getActive(), product.getCategory().getId(), product.getImageUrl()));
 
             StockMovement release =  new StockMovement();
             release.setType(MovementType.RELEASED);
@@ -82,7 +82,7 @@ public class StockService {
             Product product = reservation.getProduct();
             product.setStockQuantity(product.getStockQuantity() - reservation.getQuantity());
             product.setReservedQuantity(product.getReservedQuantity() - reservation.getQuantity());
-            productService.create(new ProductRequest(product.getName(), product.getDescription(), product.getPrice(), product.getStockQuantity(), product.getSku(), product.getActive(), product.getCategory().getId()));
+            productService.create(new ProductRequest(product.getName(), product.getDescription(), product.getPrice(), product.getStockQuantity(), product.getSku(), product.getActive(), product.getCategory().getId(), product.getImageUrl()));
 
             StockMovement out = new StockMovement();
             out.setType(MovementType.OUT);

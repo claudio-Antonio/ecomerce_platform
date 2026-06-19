@@ -48,7 +48,8 @@ import { ProductResponse } from '../../../models/index';
               <!-- PLACEHOLDER IMAGEM -->
               <div class="w-full h-40 bg-zinc-800 rounded-xl flex items-center justify-center
                           group-hover:bg-zinc-700 transition-colors overflow-hidden">
-                <span class="text-4xl">🛍️</span>
+                <img [src]="product.imageUrl" [alt]="product.name"
+                class="w-full h-40 object-cover rounded-xl" />
               </div>
 
               <div class="flex-1 flex flex-col gap-2">

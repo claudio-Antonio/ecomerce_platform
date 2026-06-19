@@ -14,7 +14,8 @@ public record ProductResponse(
         Integer availableQuantity, // Cálculo essencial: stock - reserved
         String categoryName,       // Nome para exibição direta
         Boolean active,
-        LocalDateTime updatedAt    // Mais útil que o createdAt para saber se a info é recente
+        LocalDateTime updatedAt,   // Mais útil que o createdAt para saber se a info é recente
+        String imageUrl
 ) {
     public ProductResponse(Product product) {
         this(
@@ -26,7 +27,8 @@ public record ProductResponse(
                 (product.getStockQuantity() - product.getReservedQuantity()),
                 product.getCategory() != null ? product.getCategory().getName() : null,
                 product.getActive(),
-                product.getUpdatedAt()
+                product.getUpdatedAt(),
+                product.getImageUrl()
         );
     }
 }

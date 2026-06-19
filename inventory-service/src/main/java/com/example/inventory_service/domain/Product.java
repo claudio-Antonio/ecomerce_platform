@@ -38,6 +38,8 @@ public class Product {
     private LocalDateTime createdAt;
     @Column(nullable = false)
     private LocalDateTime updatedAt;
+    @Column(nullable = true)
+    private String imageUrl;
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
     @OneToMany(fetch = FetchType.LAZY)

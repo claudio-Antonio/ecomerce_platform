@@ -30,6 +30,7 @@ public class ProductService {
                 .updatedAt(LocalDateTime.now())
                 .category(categoryService.findById(data.categoryId()))
                 .reservedQuantity(0)
+                .imageUrl(data.imageUrl())
                 .build();
         return productRepository.save(newProduct);
     }
@@ -60,6 +61,7 @@ public class ProductService {
         product.setActive(data.active());
         product.setCategory(categoryService.findById(data.categoryId()));
         product.setUpdatedAt(LocalDateTime.now());
+        product.setImageUrl(data.imageUrl());
         return productRepository.save(product);
     }
 
