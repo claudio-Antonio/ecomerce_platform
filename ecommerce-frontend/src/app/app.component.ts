@@ -1,7 +1,9 @@
-import { Component, computed } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, computed, OnInit, signal } from '@angular/core';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router'; // <-- Injetado Router
 import { CommonModule } from '@angular/common';
 import { AuthService } from './core/services/auth.service';
+import { CategoryService } from './core/services/api.services'; // <-- Importado o CategoryService
+import { CategoryResponse } from './models/index'; // <-- Importado o Model de categoria
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,6 @@ import { AuthService } from './core/services/auth.service';
   template: `
     <div class="min-h-screen bg-zinc-950 text-zinc-100 font-body">
 
-      <!-- NAVBAR -->
       <nav class="fixed top-0 inset-x-0 z-50 border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
@@ -21,6 +22,21 @@ import { AuthService } from './core/services/auth.service';
           </a>
 
           <div class="flex items-center gap-1">
+            
+            <div class="flex items-center gap-1 border-r border-zinc-800/60 pr-2 mr-2">
+              <button (click)="filtrarPorCategoria()"
+                 class="px-3 py-2 text-xs uppercase font-medium tracking-wider text-zinc-500 hover:text-white transition-colors rounded-lg hover:bg-zinc-900">
+                Todos
+              </button>
+
+              @for (cat of categories(); track cat.id) {
+                <button (click)="filtrarPorCategoria(cat.id)"
+                   class="px-3 py-2 text-xs uppercase font-medium tracking-wider text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-900">
+                  {{ cat.name }}
+                </button>
+              }
+            </div>
+
             <a routerLink="/products"
                routerLinkActive="text-amber-400"
                class="px-4 py-2 text-sm text-zinc-400 hover:text-white transition-colors rounded-lg hover:bg-zinc-800">
@@ -65,13 +81,35 @@ import { AuthService } from './core/services/auth.service';
         </div>
       </nav>
 
-      <!-- CONTEÚDO -->
       <main class="pt-16">
         <router-outlet />
       </main>
     </div>
   `
 })
-export class AppComponent {
-  constructor(public auth: AuthService) {}
+export class AppComponent implements OnInit {
+  // Signal para salvar dinamicamente as categorias encontradas
+  categories = signal<CategoryResponse[]>([]);
+
+  constructor(
+    public auth: AuthService,
+    private categoryService: CategoryService, // Injetado
+    private router: Router // Injetado
+  ) {}
+
+  ngOnInit(): void {
+    // Busca as categorias do banco de dados ao iniciar o site
+    this.categoryService.findAll().subscribe({
+      next: (data) => this.categories.set(data),
+      error: (err) => console.error('Erro ao listar categorias na navbar', err)
+    });
+  }
+
+  // Altera a URL adicionando ou removendo o queryParam categoryId
+  filtrarPorCategoria(id?: string) {
+    this.router.navigate(['/products'], {
+      queryParams: { categoryId: id },
+      queryParamsHandling: 'merge'
+    });
+  }
 }

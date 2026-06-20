@@ -29,12 +29,24 @@ import { ProductResponse } from '../../../models/index';
         </div>
       }
 
+      @if (!loading() && error()) {
+        <div class="px-4 py-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
+          {{ error() }}
+        </div>
+      }
+
       @if (product() && !loading()) {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
 
           <!-- IMAGEM -->
-          <div class="bg-zinc-900 border border-zinc-800 rounded-2xl h-80 flex items-center justify-center">
-            <span class="text-8xl">🛍️</span>
+          <div class="bg-zinc-900 border border-zinc-800 rounded-2xl h-80 flex items-center justify-center overflow-hidden">
+            @if (product()!.imageUrl) {
+              <img [src]="product()!.imageUrl" [alt]="product()!.name"
+                   class="w-full h-full object-contain"
+                   (error)="onImageError($event)" />
+            } @else {
+              <span class="text-8xl">🛍️</span>
+            }
           </div>
 
           <!-- INFO -->
@@ -109,6 +121,7 @@ import { ProductResponse } from '../../../models/index';
 export class ProductDetailComponent implements OnInit {
   product     = signal<ProductResponse | null>(null);
   loading     = signal(true);
+  error       = signal('');
   feedbackMsg = signal('');
   feedbackOk  = signal(false);
   qty         = 1;
@@ -121,10 +134,24 @@ export class ProductDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')!;
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (!id) {
+      this.error.set('ID do produto não encontrado na URL.');
+      this.loading.set(false);
+      return;
+    }
+
     this.productService.findById(id).subscribe({
-      next: p => { this.product.set(p); this.loading.set(false); },
-      error: () => this.loading.set(false)
+      next: p => {
+        this.product.set(p);
+        this.loading.set(false);
+      },
+      error: (err) => {
+        this.error.set('Não foi possível carregar este produto.');
+        this.loading.set(false);
+        console.error('Erro ao buscar produto:', err);
+      }
     });
   }
 
@@ -134,6 +161,11 @@ export class ProductDetailComponent implements OnInit {
 
   decQty(): void {
     if (this.qty > 1) this.qty--;
+  }
+
+  onImageError(event: Event): void {
+    // se a URL da imagem falhar ao carregar, oculta o <img> quebrado
+    (event.target as HTMLImageElement).style.display = 'none';
   }
 
   buy(): void {

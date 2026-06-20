@@ -2,6 +2,7 @@ package com.example.inventory_service.services;
 
 import com.example.inventory_service.domain.Product;
 import com.example.inventory_service.dtos.requests.ProductRequest;
+import com.example.inventory_service.dtos.responses.ProductResponse;
 import com.example.inventory_service.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
@@ -39,20 +40,58 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    /**
+     * Busca a ENTIDADE gerenciada pelo JPA — sem cache.
+     * Uso interno do service para qualquer operação que precise modificar
+     * e persistir (update, delete, ajuste de estoque).
+     * Nunca expor isso fora do service: Product tem relacionamento
+     * bidirecional com StockMovement, e serializar a entidade direto
+     * (JSON ou Redis) causa StackOverflowError por ciclo de referência.
+     */
+    private Product findEntityById(UUID id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+    }
+
+    /**
+     * Versão pública da busca de entidade, exposta apenas para o StockService,
+     * que precisa fazer ajustes atômicos de estoque (reservedQuantity/stockQuantity)
+     * dentro de uma transação Kafka. Não é cacheada de propósito — estoque
+     * é dado de altíssima volatilidade, cachear geraria condição de corrida
+     * entre o cache e o banco real.
+     */
+    public Product findEntityForStockUpdate(UUID id) {
+        return findEntityById(id);
+    }
+
+    /**
+     * Busca o DTO — esse sim é cacheado no Redis.
+     * ProductResponse é um record simples, sem proxies Hibernate,
+     * sem listas bidirecionais, então serializa sem problemas.
+     */
     @Cacheable("products")
-    public Product findById(UUID id) {
-        return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+    public ProductResponse findById(UUID id) {
+        return new ProductResponse(findEntityById(id));
     }
 
     @Cacheable("product-prices")
     public Double getPrice(UUID id) {
-        Product product = findById(id);
-        return product.getPrice();
+        return findEntityById(id).getPrice();
+    }
+
+    /**
+     * Persiste mudanças de estoque (reservedQuantity e/ou stockQuantity)
+     * feitas pelo StockService. Recebe a própria entidade já modificada
+     * em memória e apenas salva — não reconstrói nem recria o produto.
+     */
+    @CacheEvict(value = {"products", "product-prices"}, key = "#product.id")
+    public Product saveStockChange(Product product) {
+        return productRepository.save(product);
     }
 
     @CacheEvict(value = {"products", "product-prices"}, key = "#id")
     public Product update(UUID id, ProductRequest data) {
-        Product product = findById(id);
+        Product product = findEntityById(id);
         product.setName(data.name());
         product.setDescription(data.description());
         product.setPrice(data.price());
@@ -67,7 +106,7 @@ public class ProductService {
 
     @CacheEvict(value = {"products", "product-prices"}, key = "#id")
     public void delete(UUID id) {
-        Product product = findById(id);
+        Product product = findEntityById(id);
         productRepository.delete(product);
     }
 }

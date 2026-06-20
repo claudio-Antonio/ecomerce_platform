@@ -25,8 +25,9 @@ public class ProductController {
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<ProductResponse> findById(@PathVariable UUID id) {
-        ProductResponse response = new ProductResponse(productService.findById(id));
-        return ResponseEntity.ok().body(response);
+        // findById já retorna ProductResponse (cacheado), sem necessidade
+        // de envolver em outro new ProductResponse(...)
+        return ResponseEntity.ok().body(productService.findById(id));
     }
 
     @PostMapping
