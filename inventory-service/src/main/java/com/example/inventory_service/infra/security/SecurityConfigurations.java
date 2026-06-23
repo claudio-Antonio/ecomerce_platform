@@ -23,6 +23,7 @@ public class SecurityConfigurations {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         // products
+                        .requestMatchers(HttpMethod.GET, "/api/products/{id}/price").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/products").hasAnyRole("SELLER", "ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/products/**").hasAnyRole("SELLER", "ADMIN")

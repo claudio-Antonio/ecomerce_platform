@@ -28,6 +28,7 @@ public class TokenService {
                     .withIssuer("auth-api")
                     .withSubject(user.getEmail())
                     .withJWTId(UUID.randomUUID().toString())
+                    .withClaim("userId", user.getId().toString())   
                     .withClaim("role", user.getRole().name())
                     .withExpiresAt(genExpirationDate())
                     .sign(algorithm);

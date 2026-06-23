@@ -70,7 +70,7 @@ export interface OrderItemRequest {
 export interface OrderRequest {
   userId: string;
   items: OrderItemRequest[];
-  PaymentMethod: string;
+  paymentMethod: string;
 }
 
 export interface OrderItemResponse {

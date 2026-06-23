@@ -16,7 +16,7 @@ import java.util.UUID;
 public class StockEventConsumer {
     private final OrderRepository orderRepository;
 
-    @KafkaListener(topics = "stock-reserved", groupId = "order-service")
+    @KafkaListener(topics = "stock-reserved", groupId = "order-service", properties = {"spring.json.value.default.type=com.example.order_service.infra.kafka.events.StockReservedEvent"})
     public void onStockReserved(StockReservedEvent event) {
         orderRepository
                 .findById(UUID.fromString(event.orderId()))
@@ -27,7 +27,7 @@ public class StockEventConsumer {
                 });
     }
 
-    @KafkaListener(topics = "stock-failed", groupId = "order-service")
+    @KafkaListener(topics = "stock-failed", groupId = "order-service", properties = {"spring.json.value.default.type=com.example.order_service.infra.kafka.events.StockFailedEvent"})
     public void onStockFailed(StockFailedEvent event) {
         orderRepository
                 .findById(UUID.fromString(event.orderId()))

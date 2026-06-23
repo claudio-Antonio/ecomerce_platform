@@ -47,7 +47,7 @@ public class OrderService {
                 .sum();
 
         // 3. cria o pagamento com o total real
-        PaymentRequest payRequest = new PaymentRequest(request.PaymentMethod());
+        PaymentRequest payRequest = new PaymentRequest(request.paymentMethod());
         Payment payment = paymentService.create(payRequest);
         payment.setAmount(total);
 

@@ -5,5 +5,5 @@ import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
-public record OrderRequest( UUID userId,  List<OrderItemRequest> items,  String PaymentMethod) {
+public record OrderRequest( UUID userId,  List<OrderItemRequest> items,  String paymentMethod) {
 }

@@ -29,6 +29,13 @@ import { ProductResponse } from '../../../models/index';
         </div>
       }
 
+      <!-- ERRO — fica fora do bloco do produto, sempre visível quando existir -->
+      @if (!loading() && error()) {
+        <div class="px-4 py-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm mb-6">
+          {{ error() }}
+        </div>
+      }
+
       @if (!loading() && product()) {
         <!-- RESUMO DO PRODUTO -->
         <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 mb-6">
@@ -62,9 +69,9 @@ import { ProductResponse } from '../../../models/index';
             </select>
           </div>
 
-          @if (error()) {
+          @if (submitError()) {
             <div class="px-4 py-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
-              {{ error() }}
+              {{ submitError() }}
             </div>
           }
 
@@ -84,11 +91,12 @@ import { ProductResponse } from '../../../models/index';
   `
 })
 export class OrderNewComponent implements OnInit {
-  product    = signal<ProductResponse | null>(null);
-  loading    = signal(true);
-  submitting = signal(false);
-  error      = signal('');
-  quantity   = 1;
+  product     = signal<ProductResponse | null>(null);
+  loading     = signal(true);
+  submitting  = signal(false);
+  error       = signal('');       // erro ao carregar o produto
+  submitError = signal('');       // erro ao criar o pedido
+  quantity    = 1;
   form: FormGroup;
 
   constructor(
@@ -105,36 +113,62 @@ export class OrderNewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const productId = this.route.snapshot.queryParamMap.get('productId')!;
-    this.quantity   = Number(this.route.snapshot.queryParamMap.get('quantity') ?? 1);
+    const productId = this.route.snapshot.queryParamMap.get('productId');
+    const qtyParam   = this.route.snapshot.queryParamMap.get('quantity');
+
+    if (!productId) {
+      this.error.set('Nenhum produto selecionado. Volte ao catálogo e escolha um produto.');
+      this.loading.set(false);
+      return;
+    }
+
+    this.quantity = Number(qtyParam ?? 1);
 
     this.productService.findById(productId).subscribe({
-      next: p => { this.product.set(p); this.loading.set(false); },
-      error: () => { this.error.set('Produto não encontrado.'); this.loading.set(false); }
+      next: p => {
+        this.product.set(p);
+        this.loading.set(false);
+      },
+      error: (err) => {
+        this.error.set('Não foi possível carregar este produto. Volte ao catálogo e tente novamente.');
+        this.loading.set(false);
+        console.error('Erro ao buscar produto em order-new:', err);
+      }
     });
   }
 
   submit(): void {
     if (this.form.invalid || !this.product()) return;
     this.submitting.set(true);
-    this.error.set('');
+    this.submitError.set('');
 
-    // decodifica o userId do token JWT
-    const token   = this.auth.getToken()!;
+    const token = this.auth.getToken();
+    if (!token) {
+      this.submitError.set('Sessão expirada. Faça login novamente.');
+      this.submitting.set(false);
+      this.router.navigate(['/login']);
+      return;
+    }
+
     const payload = JSON.parse(atob(token.split('.')[1]));
+    
+    // Mostra no console do navegador todas as claims do token para te ajudar a debugar se necessário
+    console.log('Payload do Token:', payload); 
 
     this.orderService.create({
-      userId: payload.sub,
-      PaymentMethod: this.form.value.paymentMethod,
+      // Usamos uma propriedade fallback para não enviar nulo
+      userId: payload.userId,
+      paymentMethod: this.form.value.paymentMethod,
       items: [{
         productId: this.product()!.id,
         quantity: this.quantity
       }]
     }).subscribe({
       next: order => this.router.navigate(['/orders', order.id]),
-      error: () => {
-        this.error.set('Erro ao criar pedido. Tente novamente.');
+      error: (err) => {
+        this.submitError.set('Erro ao criar pedido. Tente novamente.');
         this.submitting.set(false);
+        console.error('Erro ao criar pedido:', err);
       }
     });
   }

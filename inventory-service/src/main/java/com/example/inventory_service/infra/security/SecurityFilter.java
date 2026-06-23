@@ -29,7 +29,8 @@ public class SecurityFilter extends OncePerRequestFilter {
             if(subject != null) {
                 String role = tokenService.extractRole(token);
 
-                var authorities = List.of(new SimpleGrantedAuthority("ROLE_" + role));
+                String formattedRole = role.startsWith("ROLE_") ? role : "ROLE_" + role;
+                var authorities = List.of(new SimpleGrantedAuthority(formattedRole));
                 var authentication = new UsernamePasswordAuthenticationToken(subject, null, authorities);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }

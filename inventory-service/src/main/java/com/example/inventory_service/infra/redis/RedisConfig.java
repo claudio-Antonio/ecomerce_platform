@@ -1,7 +1,9 @@
 package com.example.inventory_service.infra.redis;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -23,13 +25,13 @@ public class RedisConfig {
     public RedisCacheManager cacheManager(RedisConnectionFactory factory) {
 
         // ObjectMapper próprio com suporte a LocalDate/LocalDateTime/Instant etc.
-        // Sem isso, qualquer entidade com campo java.time.* quebra a serialização no Redis.
         ObjectMapper redisObjectMapper = new ObjectMapper();
         redisObjectMapper.registerModule(new JavaTimeModule());
         redisObjectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         redisObjectMapper.activateDefaultTyping(
-                redisObjectMapper.getPolymorphicTypeValidator(),
-                ObjectMapper.DefaultTyping.NON_FINAL
+                LaissezFaireSubTypeValidator.instance,
+                ObjectMapper.DefaultTyping.EVERYTHING,
+                JsonTypeInfo.As.PROPERTY
         );
 
         GenericJackson2JsonRedisSerializer serializer =

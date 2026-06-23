@@ -8,7 +8,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   // Rotas onde o método GET é 100% público (não precisa de token)
   const isPublicGetProducts = req.url.includes('/api/products') && req.method === 'GET';
-  const isPublicGetCategories = req.url.includes('/api/categories') && req.method === 'GET'; // <-- ADICIONEI ESTA LINHA
+  const isPublicGetCategories = req.url.includes('/api/categories') && req.method === 'GET'; 
   
   // Rotas de autenticação (Login/Cadastro) sempre públicas
   const isAuthRoute = req.url.includes('/api/auth/login') || req.url.includes('/api/auth/register');

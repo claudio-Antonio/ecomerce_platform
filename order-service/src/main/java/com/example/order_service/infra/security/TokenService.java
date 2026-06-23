@@ -39,4 +39,19 @@ public class TokenService {
             return null;
         }
     }
+
+    public String extractUserId(String token) {
+        Algorithm algorithm = Algorithm.HMAC256(secret);
+        try {
+            return JWT.require(algorithm)
+                    .withIssuer("auth-api")
+                    .build()
+                    .verify(token)
+                    .getClaim("userId")
+                    .asString();
+        }
+        catch (JWTVerificationException e) {
+            return null;
+        }
+    }
 }
