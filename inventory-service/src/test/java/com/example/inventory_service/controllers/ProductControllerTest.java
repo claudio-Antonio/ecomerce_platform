@@ -35,6 +35,7 @@ class ProductControllerTest {
 
     private UUID productId;
     private Product product;
+    private ProductResponse productResponse;
     private ProductRequest productRequest;
 
     @BeforeEach
@@ -57,10 +58,15 @@ class ProductControllerTest {
                 .sku("TEC-001")
                 .active(true)
                 .category(category)
+                .imageUrl("http://image.com/keyboard.jpg")
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
                 .build();
 
+        // Instancia o DTO correto baseado no produto simulado
+        productResponse = new ProductResponse(product);
+
+        // CORREÇÃO: Adicionado o argumento "imageUrl" ao construtor do record
         productRequest = new ProductRequest(
                 "Teclado Mecânico",
                 "Switch Blue RGB",
@@ -68,7 +74,8 @@ class ProductControllerTest {
                 15,
                 "TEC-001",
                 true,
-                categoryId
+                categoryId,
+                "http://image.com/keyboard.jpg"
         );
     }
 
@@ -82,6 +89,7 @@ class ProductControllerTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).hasSize(1);
         assertThat(response.getBody().get(0).name()).isEqualTo("Teclado Mecânico");
+        // CORREÇÃO: Busca o método disponível em ProductResponse (disponível através do construtor de record)
         assertThat(response.getBody().get(0).availableQuantity()).isEqualTo(13);
         verify(productService, times(1)).findAll();
     }
@@ -100,7 +108,8 @@ class ProductControllerTest {
     @Test
     @DisplayName("Should return 200 and product response when found by id")
     void findById_shouldReturn200WhenFound() {
-        when(productService.findById(productId)).thenReturn(product);
+        // CORREÇÃO: O service modificado agora retorna diretamente um ProductResponse
+        when(productService.findById(productId)).thenReturn(productResponse);
 
         ResponseEntity<ProductResponse> response = productController.findById(productId);
 
@@ -119,6 +128,19 @@ class ProductControllerTest {
         assertThatThrownBy(() -> productController.findById(nonexistentId))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("Product not found");
+    }
+
+    @Test
+    @DisplayName("Should return 200 and double value when get price succeeds")
+    void getPrice_shouldReturnProductPrice() {
+        // ADICIONADO: Cobertura para o endpoint de busca de preços
+        when(productService.getPrice(productId)).thenReturn(350.0);
+
+        ResponseEntity<Double> response = productController.getPrice(productId);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(350.0);
+        verify(productService, times(1)).getPrice(productId);
     }
 
     @Test
@@ -148,8 +170,8 @@ class ProductControllerTest {
     }
 
     @Test
-    @DisplayName("Should return 244 no content when deletion request is completed")
-    void deleteProduct_shouldReturn244WhenDeleted() {
+    @DisplayName("Should return 204 no content when deletion request is completed")
+    void deleteProduct_shouldReturn204WhenDeleted() {
         doNothing().when(productService).delete(productId);
 
         ResponseEntity<Void> response = productController.deleteProduct(productId);

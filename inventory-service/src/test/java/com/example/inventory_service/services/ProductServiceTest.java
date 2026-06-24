@@ -6,6 +6,7 @@ import static org.mockito.Mockito.*;
 import com.example.inventory_service.domain.Category;
 import com.example.inventory_service.domain.Product;
 import com.example.inventory_service.dtos.requests.ProductRequest;
+import com.example.inventory_service.dtos.responses.ProductResponse;
 import com.example.inventory_service.repositories.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -60,10 +61,12 @@ class ProductServiceTest {
                 .sku("CPU-001")
                 .active(true)
                 .category(category)
+                .imageUrl("http://image.com/cpu.jpg")
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
                 .build();
 
+        // CORREÇÃO: Adicionado o argumento null (ou string) para a imageUrl que o record agora espera
         productRequest = new ProductRequest(
                 "Processador",
                 "Processador de última geração",
@@ -71,7 +74,8 @@ class ProductServiceTest {
                 10,
                 "CPU-001",
                 true,
-                categoryId
+                categoryId,
+                "http://image.com/cpu.jpg"
         );
     }
 
@@ -114,19 +118,21 @@ class ProductServiceTest {
     }
 
     @Test
-    @DisplayName("Should return product when found by id")
-    void findById_shouldReturnProductWhenFound() {
+    @DisplayName("Should return ProductResponse DTO when found by id")
+    void findById_shouldReturnProductResponseWhenFound() {
         when(productRepository.findById(productId)).thenReturn(Optional.of(product));
 
-        Product result = productService.findById(productId);
+        // CORREÇÃO: Tipo alterado de Product para ProductResponse para refletir o service real
+        ProductResponse result = productService.findById(productId);
 
         assertThat(result).isNotNull();
-        assertThat(result.getId()).isEqualTo(productId);
+        assertThat(result.id()).isEqualTo(productId);
+        assertThat(result.name()).isEqualTo("Processador");
         verify(productRepository, times(1)).findById(productId);
     }
 
     @Test
-    @DisplayName("Should throw RuntimeException when product not found by id")
+    @DisplayName("Should throw RuntimeException when public findById does not find product")
     void findById_shouldThrowRuntimeExceptionWhenNotFound() {
         UUID randomId = UUID.randomUUID();
         when(productRepository.findById(randomId)).thenReturn(Optional.empty());
@@ -149,9 +155,32 @@ class ProductServiceTest {
     }
 
     @Test
+    @DisplayName("Should return raw Product entity for stock updates")
+    void findEntityForStockUpdate_shouldReturnRawEntity() {
+        when(productRepository.findById(productId)).thenReturn(Optional.of(product));
+
+        Product result = productService.findEntityForStockUpdate(productId);
+
+        assertThat(result).isNotNull();
+        assertThat(result.getId()).isEqualTo(productId);
+        verify(productRepository, times(1)).findById(productId);
+    }
+
+    @Test
+    @DisplayName("Should persist and return product when saving stock change")
+    void saveStockChange_shouldSaveAndReturnProduct() {
+        when(productRepository.save(product)).thenReturn(product);
+
+        Product result = productService.saveStockChange(product);
+
+        assertThat(result).isNotNull();
+        verify(productRepository, times(1)).save(product);
+    }
+
+    @Test
     @DisplayName("Should update and return updated product")
     void update_shouldUpdateAndReturnProduct() {
-        ProductRequest updateRequest = new ProductRequest("Novo Nome", "Nova Desc", 1600.0, 15, "CPU-002", true, categoryId);
+        ProductRequest updateRequest = new ProductRequest("Novo Nome", "Nova Desc", 1600.0, 15, "CPU-002", true, categoryId, "http://image.com/new.jpg");
         Product updatedProduct = Product.builder().id(productId).name("Novo Nome").price(1600.0).category(category).build();
 
         when(productRepository.findById(productId)).thenReturn(Optional.of(product));

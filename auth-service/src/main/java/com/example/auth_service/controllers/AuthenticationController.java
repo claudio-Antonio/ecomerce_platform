@@ -5,10 +5,15 @@ import com.example.auth_service.controllers.dtos.LoginResponseDTO;
 import com.example.auth_service.controllers.dtos.RegisterDTO;
 import com.example.auth_service.domain.User;
 import com.example.auth_service.infra.redis.BlacklistToken;
+import com.example.auth_service.infra.security.SecurityConfiguration;
 import com.example.auth_service.infra.security.TokenService;
 import com.example.auth_service.kafka.producer.UserEventProducer;
 import com.example.auth_service.repositories.redis.BlacklistRepository;
 import com.example.auth_service.repositories.jpa.UserRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +30,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
+@Tag(name = "/api/auth", description = "controller to register and authenticate new users")
+@SecurityRequirement(name = SecurityConfiguration.SECURITY)
 public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final UserRepository repository;
@@ -34,6 +41,10 @@ public class AuthenticationController {
     private final UserEventProducer userEventProducer;
 
     @PostMapping("/login")
+    @Operation(summary = "User login")
+    @ApiResponse(responseCode = "200", description = "User logged in successfully")
+    @ApiResponse(responseCode = "404", description = "BadRequestException, user not authenticated")
+    @ApiResponse(responseCode = "500", description = "Server error")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid AuthenticationDTO data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         var auth = authenticationManager.authenticate(usernamePassword);
@@ -42,6 +53,10 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
+    @Operation(summary = "save new users")
+    @ApiResponse(responseCode = "201", description = "New user registered")
+    @ApiResponse(responseCode = "400", description = "BadRequestException, user exists")
+    @ApiResponse(responseCode = "500", description = "Server error")
     public ResponseEntity<Void> register(@RequestBody @Valid RegisterDTO data) {
         if(repository.findByEmail(data.email()) != null) return  ResponseEntity.badRequest().build();
 
