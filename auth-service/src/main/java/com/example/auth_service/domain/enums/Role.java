@@ -3,8 +3,7 @@ package com.example.auth_service.domain.enums;
 public enum Role {
     CUSTOMER("customer"),
     SELLER("seller"),
-    ADMIN("admin"),
-    MODERATOR("moderator");
+    ADMIN("admin");
 
     private String role;
 

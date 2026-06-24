@@ -49,7 +49,6 @@ public class User implements Serializable, UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (role == Role.ADMIN) return  List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
         else if(role == Role.SELLER) return  List.of(new SimpleGrantedAuthority("ROLE_SELLER"));
-        else if (role == Role.MODERATOR) return  List.of(new SimpleGrantedAuthority("ROLE_MODERATOR"));
         return List.of(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
     }
 

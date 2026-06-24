@@ -116,7 +116,7 @@ O `inventory-service` processa os eventos em sequencia dentro da mesma particao 
 
 O `auth-service` e o unico servico responsavel por emitir tokens JWT. Os demais servicos (`order-service`, `inventory-service`) validam o token localmente usando a mesma chave secreta compartilhada via variavel de ambiente — sem nenhuma chamada ao `auth-service` a cada request.
 
-O token carrega as claims necessarias para autorizacao: `sub` (email do usuario), `role` (CUSTOMER, SELLER, ADMIN, MODERATOR) e `jti` (ID unico do token para blacklist).
+O token carrega as claims necessarias para autorizacao: `sub` (email do usuario), `role` (CUSTOMER, SELLER, ADMIN) e `jti` (ID unico do token para blacklist).
 
 ### Fluxo de logout
 
@@ -128,8 +128,7 @@ O JWT e stateless por natureza — uma vez emitido, e valido ate expirar. Para i
 |---|---|
 | CUSTOMER | criar pedidos, ver proprios pedidos, navegar catalogo |
 | SELLER | criar e editar proprios produtos, ver pedidos dos seus produtos |
-| MODERATOR | aprovar/rejeitar produtos, moderar conteudo |
-| ADMIN | acesso total |
+| ADMIN | acesso total em relação as anteriores e pode criar categorias |
 
 ---
 

@@ -23,7 +23,7 @@ public class PaymentService {
         payment.setStatus(PaymentStatus.PENDING);
         payment.setProcessedAt(LocalDateTime.now());
         payment.setAmount(0.0);
-        payment.setTransactionId("PENDING");
+        payment.setTransactionId(UUID.randomUUID().toString());
 
         return repository.save(payment);
     }
