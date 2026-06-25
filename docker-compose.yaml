@@ -28,9 +28,9 @@ services:
     image: postgres:16
     container_name: users_db
     environment:
-      - POSTGRES_DB=users
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=${KEY_POSTGRES_USERS_DB}
+      - POSTGRES_USER=${KEY_POSTGRES_USERS_USER}
+      - POSTGRES_PASSWORD=${KEY_POSTGRES_USERS_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
@@ -42,9 +42,9 @@ services:
     image: postgres:16
     container_name: orders_db
     environment:
-      - POSTGRES_DB=orders
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=${KEY_POSTGRES_ORDERS_DB}
+      - POSTGRES_USER=${KEY_POSTGRES_ORDERS_USER}
+      - POSTGRES_PASSWORD=${KEY_POSTGRES_ORDERS_PASSWORD}
     ports:
       - "5433:5432" 
     volumes:
@@ -56,9 +56,9 @@ services:
     image: postgres:16
     container_name: inventory_db
     environment:
-      - POSTGRES_DB=inventories
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=${KEY_POSTGRES_INVENTORIES_DB}
+      - POSTGRES_USER=${KEY_POSTGRES_INVENTORIES_USER}
+      - POSTGRES_PASSWORD=${KEY_POSTGRES_INVENTORIES_PASSWORD}
     ports:
       - "5434:5432"
     volumes:
@@ -86,9 +86,9 @@ services:
       - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
       - DB_HOST=users_db
       - SPRING_DATASOURCE_URL=jdbc:postgresql://users_db:5432/users
-      - SPRING_DATASOURCE_USERNAME=user
-      - SPRING_DATASOURCE_PASSWORD=password
-      - JWT_SECRET=UmaChaveSecretaMuitoLongaeSeguraComLetraseNumeros123!
+      - SPRING_DATASOURCE_USERNAME=${KEY_POSTGRES_USERS_USER}
+      - SPRING_DATASOURCE_PASSWORD=${KEY_POSTGRES_USERS_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
     depends_on:
       - kafka
       - users_db
@@ -103,9 +103,9 @@ services:
       - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
       - DB_HOST=orders_db
       - SPRING_DATASOURCE_URL=jdbc:postgresql://orders_db:5432/orders
-      - SPRING_DATASOURCE_USERNAME=user
-      - SPRING_DATASOURCE_PASSWORD=password
-      - JWT_SECRET=UmaChaveSecretaMuitoLongaeSeguraComLetraseNumeros123!
+      - SPRING_DATASOURCE_USERNAME=${KEY_POSTGRES_ORDERS_USER}
+      - SPRING_DATASOURCE_PASSWORD=${KEY_POSTGRES_ORDERS_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
     depends_on:
       - kafka
       - orders_db
@@ -120,9 +120,9 @@ services:
       - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
       - DB_HOST=inventory_db
       - SPRING_DATASOURCE_URL=jdbc:postgresql://inventory_db:5432/inventories
-      - SPRING_DATASOURCE_USERNAME=user
-      - SPRING_DATASOURCE_PASSWORD=password
-      - JWT_SECRET=UmaChaveSecretaMuitoLongaeSeguraComLetraseNumeros123!
+      - SPRING_DATASOURCE_USERNAME=${KEY_POSTGRES_INVENTORIES_USER}
+      - SPRING_DATASOURCE_PASSWORD=${KEY_POSTGRES_INVENTORIES_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
     depends_on:
       - kafka
       - inventory_db
