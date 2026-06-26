@@ -6,22 +6,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
-        body:    ['Inter', 'sans-serif'],
+        // Fontes padrão de sistema comerciais (estilo Amazon Ember)
+        display: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        body:    ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
       },
       colors: {
-        brand: {
-          DEFAULT: '#FBBF24', // amber-400
-          dark:    '#F59E0B', // amber-500
-        }
-      },
-      animation: {
-        'fade-in': 'fadeIn 0.3s ease-in-out',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%':   { opacity: '0', transform: 'translateY(8px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+        amazon: {
+          darkblue: '#131921',   // O azul escuro clássico da barra da amazon
+          navbelw:  '#232f3e',   // O azul secundário usado em menus inferiores
+          yellow:   '#ff9900',   // O laranja/amarelo do logo e botões principais
+          gold:     '#febd69',   // O dourado de realce e botões secundários
+          graybg:   '#eaeded',   // O cinza claro de fundo do site da amazon
         }
       }
     },

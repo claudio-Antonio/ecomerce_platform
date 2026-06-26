@@ -9,49 +9,51 @@ import { AuthService } from '../../core/services/auth.service';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, RouterLink],
   template: `
-    <div class="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4">
-      <div class="w-full max-w-sm">
+    <div class="max-w-md mx-auto my-16 p-6 bg-white border border-zinc-200 rounded-md shadow-sm">
+      
+      <div class="text-center mb-6">
+        <h1 class="text-2xl font-normal text-zinc-900 mb-1">
+          Fazer login
+        </h1>
+        <p class="text-zinc-600 text-sm">Entre na sua conta para continuar</p>
+      </div>
 
-        <div class="mb-10 text-center">
-          <h1 class="text-3xl font-display font-black text-white mb-2">Bem-vindo de volta</h1>
-          <p class="text-zinc-500 text-sm">Entre na sua conta para continuar</p>
+      <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col gap-4">
+        
+        <div class="flex flex-col gap-1">
+          <label class="text-xs font-bold text-zinc-800">E-mail</label>
+          <input formControlName="email" type="email" placeholder="seu@email.com"
+            class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm
+                   focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
         </div>
 
-        <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+        <div class="flex flex-col gap-1">
+          <label class="text-xs font-bold text-zinc-800">Senha</label>
+          <input formControlName="password" type="password" placeholder="••••••••"
+            class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm
+                   focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
+        </div>
 
-          <div>
-            <label class="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Email</label>
-            <input formControlName="email" type="email" placeholder="seu@email.com"
-              class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder-zinc-600
-                     focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 transition-all text-sm" />
+        @if (error) {
+          <div class="px-4 py-2 bg-red-50 border border-red-200 rounded text-red-600 text-sm">
+            {{ error }}
           </div>
+        }
 
-          <div>
-            <label class="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Senha</label>
-            <input formControlName="password" type="password" placeholder="••••••••"
-              class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder-zinc-600
-                     focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 transition-all text-sm" />
-          </div>
+        <button type="submit" [disabled]="loading || form.invalid"
+          class="w-full mt-2 py-1.5 bg-amazon-yellow hover:bg-amber-500 text-zinc-950 font-medium text-sm rounded border border-amber-500 hover:border-amber-600 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+          @if (loading) { Entrando... } @else { Entrar }
+        </button>
 
-          @if (error) {
-            <div class="px-4 py-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
-              {{ error }}
-            </div>
-          }
+      </form>
 
-          <button type="submit" [disabled]="loading || form.invalid"
-            class="w-full py-3 bg-amber-400 text-zinc-950 font-bold rounded-xl hover:bg-amber-300
-                   transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm tracking-wide">
-            @if (loading) { Entrando... } @else { Entrar }
-          </button>
-
-        </form>
-
-        <p class="mt-6 text-center text-sm text-zinc-500">
-          Não tem conta?
-          <a routerLink="/register" class="text-amber-400 hover:text-amber-300 font-medium ml-1">Cadastre-se</a>
-        </p>
+      <div class="mt-6 pt-4 border-t border-zinc-200 text-center text-xs text-zinc-600">
+        Novo no markethub? 
+        <a routerLink="/register" class="text-blue-600 hover:text-amber-600 hover:underline ml-1">
+          Cadastre-se
+        </a>
       </div>
+
     </div>
   `
 })

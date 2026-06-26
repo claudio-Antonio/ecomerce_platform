@@ -10,71 +10,73 @@ import { AuthService } from '../../core/services/auth.service';
   imports: [ReactiveFormsModule, CommonModule, RouterLink],
   template: `
     <div class="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-12">
-      <div class="w-full max-w-sm">
+      <div class="w-full max-w-md bg-white border border-zinc-200 rounded-md p-6 shadow-sm">
 
-        <div class="mb-10 text-center">
-          <h1 class="text-3xl font-display font-black text-white mb-2">Criar conta</h1>
-          <p class="text-zinc-500 text-sm">Junte-se ao MarketHub hoje</p>
+        <div class="mb-6 text-center">
+          <h1 class="text-2xl font-normal text-zinc-900 mb-1">
+            Criar conta
+          </h1>
+          <p class="text-zinc-600 text-sm">Registe-se no markethub para começar</p>
         </div>
 
-        <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+        <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col gap-4">
 
-          <div>
-            <label class="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Nome</label>
-            <input formControlName="name" type="text" placeholder="Seu nome completo"
-              class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder-zinc-600
-                     focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 transition-all text-sm" />
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-bold text-zinc-800">Nome completo</label>
+            <input formControlName="name" type="text" placeholder="Seu nome"
+              class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm
+                     focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
           </div>
 
-          <div>
-            <label class="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Email</label>
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-bold text-zinc-800">E-mail</label>
             <input formControlName="email" type="email" placeholder="seu@email.com"
-              class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder-zinc-600
-                     focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 transition-all text-sm" />
+              class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm
+                     focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
           </div>
 
-          <div>
-            <label class="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Senha</label>
-            <input formControlName="password" type="password" placeholder="Mínimo 6 caracteres"
-              class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-white placeholder-zinc-600
-                     focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 transition-all text-sm" />
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-bold text-zinc-800">Palavra-passe</label>
+            <input formControlName="password" type="password" placeholder="No mínimo 6 caracteres"
+              class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm
+                     focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
           </div>
 
-          <div>
-            <label class="block text-xs font-medium text-zinc-400 mb-1.5 uppercase tracking-wider">Tipo de conta</label>
+          <div class="flex flex-col gap-1">
+            <label class="text-xs font-bold text-zinc-800">Tipo de conta</label>
             <select formControlName="role"
-              class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-white
-                     focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 transition-all text-sm">
-              <option value="CUSTOMER">Comprador</option>
-              <option value="SELLER">Vendedor</option>
-              <option value="ADMIN">Administrador</option>
+              class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm
+                     focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm cursor-pointer">
+              <option value="CUSTOMER">Cliente padrão (CUSTOMER)</option>
+              <option value="ADMIN">Administrador de Catálogo (ADMIN)</option>
             </select>
           </div>
 
           @if (error) {
-            <div class="px-4 py-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
+            <div class="px-4 py-2 bg-red-50 border border-red-200 rounded text-red-600 text-sm">
               {{ error }}
             </div>
           }
 
           @if (success) {
-            <div class="px-4 py-3 bg-green-500/10 border border-green-500/30 rounded-xl text-green-400 text-sm">
-              Conta criada! Redirecionando...
+            <div class="px-4 py-2 bg-green-50 border border-green-200 rounded text-green-700 text-sm">
+              Conta criada com sucesso! Redirecionando...
             </div>
           }
 
           <button type="submit" [disabled]="loading || form.invalid"
-            class="w-full py-3 bg-amber-400 text-zinc-950 font-bold rounded-xl hover:bg-amber-300
-                   transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm tracking-wide">
+            class="w-full mt-2 py-1.5 bg-amazon-yellow hover:bg-amber-500 text-zinc-950 font-medium text-sm rounded border border-amber-500 hover:border-amber-600 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
             @if (loading) { Criando conta... } @else { Criar conta }
           </button>
 
         </form>
 
-        <p class="mt-6 text-center text-sm text-zinc-500">
-          Já tem conta?
-          <a routerLink="/login" class="text-amber-400 hover:text-amber-300 font-medium ml-1">Entrar</a>
-        </p>
+        <div class="mt-6 pt-4 border-t border-zinc-200 text-center text-xs text-zinc-600">
+          Já tem uma conta? 
+          <a routerLink="/login" class="text-blue-600 hover:text-amber-600 hover:underline ml-1">
+            Fazer login
+          </a>
+        </div>
       </div>
     </div>
   `
@@ -106,10 +108,11 @@ export class RegisterComponent {
     this.auth.register(this.form.value).subscribe({
       next: () => {
         this.success = true;
+        this.loading = false;
         setTimeout(() => this.router.navigate(['/login']), 1500);
       },
-      error: () => {
-        this.error = 'Erro ao criar conta. Email pode já estar em uso.';
+      error: err => {
+        this.error = err.error?.message || 'Erro ao criar conta.';
         this.loading = false;
       }
     });

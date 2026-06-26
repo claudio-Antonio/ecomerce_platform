@@ -10,78 +10,71 @@ import { ProductResponse } from '../../../models/index';
   standalone: true,
   imports: [CommonModule, RouterLink, FormsModule],
   template: `
-    <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="max-w-7xl mx-auto px-4 py-8">
 
-      <!-- HERO -->
-      <div class="mb-12">
-        <h1 class="text-5xl font-display font-black text-white tracking-tighter mb-3">
-          Catálogo
-        </h1>
-        <p class="text-zinc-500 text-lg">{{ filtered().length }} produtos disponíveis</p>
+      <div class="bg-white p-4 rounded shadow-sm mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border border-zinc-200">
+        <div>
+          <h1 class="text-xl font-bold text-zinc-900">
+            Resultados
+          </h1>
+          <p class="text-zinc-500 text-xs">{{ filtered().length }} produtos encontrados</p>
+        </div>
+
+        <div class="w-full max-w-md flex">
+          <input [(ngModel)]="search" type="text" placeholder="Buscar produtos no markethub..."
+            class="w-full px-4 py-2 bg-white border border-zinc-300 rounded-l focus:outline-none focus:border-amazon-yellow text-zinc-800 text-sm shadow-inner" />
+          <button class="bg-amazon-gold px-5 flex items-center justify-center rounded-r hover:bg-amazon-yellow text-zinc-900 transition-colors border-none outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.604 10.604Z" />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <!-- BUSCA -->
-      <div class="mb-8">
-        <input [(ngModel)]="search" type="text" placeholder="Buscar produtos..."
-          class="w-full max-w-md px-5 py-3 bg-zinc-900 border border-zinc-800 rounded-xl text-white
-                 placeholder-zinc-600 focus:outline-none focus:border-amber-400
-                 focus:ring-1 focus:ring-amber-400/30 transition-all text-sm" />
-      </div>
-
-      <!-- LOADING -->
       @if (loading()) {
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           @for (n of [1,2,3,4,5,6,7,8]; track n) {
-            <div class="bg-zinc-900 rounded-2xl h-64 animate-pulse border border-zinc-800"></div>
+            <div class="bg-white rounded p-4 h-72 animate-pulse border border-zinc-200 shadow-sm"></div>
           }
         </div>
       }
 
-      <!-- GRID DE PRODUTOS -->
       @if (!loading()) {
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           @for (product of filtered(); track product.id) {
             <a [routerLink]="['/products', product.id]"
-               class="group bg-zinc-900 border border-zinc-800 rounded-2xl p-5 flex flex-col gap-4
-                      hover:border-amber-400/50 hover:bg-zinc-800/50 transition-all duration-200">
+               class="group bg-white border border-zinc-200 rounded p-4 flex flex-col gap-3
+                      hover:shadow-lg transition-all duration-150 relative">
 
-              <!-- PLACEHOLDER IMAGEM -->
-              <div class="w-full h-40 bg-zinc-800 rounded-xl flex items-center justify-center
-                          group-hover:bg-zinc-700 transition-colors overflow-hidden">
+              <div class="w-full h-44 bg-zinc-50 rounded flex items-center justify-center overflow-hidden p-2">
                 <img [src]="product.imageUrl" [alt]="product.name"
-                class="w-full h-40 object-cover rounded-xl" />
+                     class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-200" />
               </div>
 
-              <div class="flex-1 flex flex-col gap-2">
-                <!-- CATEGORIA -->
+              <div class="flex-1 flex flex-col gap-1.5">
                 @if (product.categoryName) {
-                  <span class="text-xs text-amber-400 font-medium uppercase tracking-wider">
+                  <span class="text-[10px] text-zinc-500 font-bold uppercase tracking-wide">
                     {{ product.categoryName }}
                   </span>
                 }
 
-                <!-- NOME -->
-                <h3 class="text-white font-semibold text-sm leading-tight line-clamp-2
-                           group-hover:text-amber-400 transition-colors">
+                <h3 class="text-zinc-900 font-normal text-sm leading-snug line-clamp-3 group-hover:text-amber-600 transition-colors">
                   {{ product.name }}
                 </h3>
 
-                <!-- SKU -->
-                <span class="text-xs text-zinc-600">{{ product.sku }}</span>
+                <span class="text-[11px] text-zinc-400">SKU: {{ product.sku }}</span>
               </div>
 
-              <div class="flex items-center justify-between pt-2 border-t border-zinc-800">
-                <!-- PREÇO -->
-                <span class="text-lg font-display font-black text-white">
-                  {{ product.price | currency:'BRL':'symbol':'1.2-2' }}
-                </span>
+              <div class="pt-2 border-t border-zinc-100 flex flex-col gap-1">
+                <div class="flex items-baseline gap-1">
+                  <span class="text-2xl font-normal text-zinc-900 tracking-tight">
+                    {{ product.price | currency:'BRL':'symbol':'1.2-2' }}
+                  </span>
+                </div>
 
-                <!-- ESTOQUE -->
-                <span class="text-xs px-2 py-1 rounded-lg"
-                  [class]="product.availableQuantity > 0
-                    ? 'bg-green-500/10 text-green-400'
-                    : 'bg-red-500/10 text-red-400'">
-                  {{ product.availableQuantity > 0 ? product.availableQuantity + ' disp.' : 'Esgotado' }}
+                <span class="text-xs font-medium"
+                  [class]="product.availableQuantity > 0 ? 'text-green-600' : 'text-red-600'">
+                  {{ product.availableQuantity > 0 ? 'Em estoque (' + product.availableQuantity + ')' : 'Fora de estoque' }}
                 </span>
               </div>
             </a>
@@ -89,8 +82,8 @@ import { ProductResponse } from '../../../models/index';
         </div>
 
         @if (filtered().length === 0 && !loading()) {
-          <div class="text-center py-24">
-            <p class="text-zinc-600 text-lg">Nenhum produto encontrado para "{{ search }}"</p>
+          <div class="text-center py-20 bg-white border border-zinc-200 rounded shadow-sm">
+            <p class="text-zinc-500 text-base">Nenhum produto encontrado para o termo pesquisado.</p>
           </div>
         }
       }

@@ -9,52 +9,53 @@ import { CategoryResponse } from '../../../models/index';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
-    <div class="max-w-3xl mx-auto px-6 py-12">
+    <div class="max-w-3xl mx-auto px-4 py-8">
 
-      <div class="flex items-center justify-between mb-10">
-        <h1 class="text-4xl font-display font-black text-white tracking-tight">Categorias</h1>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div>
+          <h1 class="text-2xl font-normal text-zinc-900">Categorias</h1>
+          <p class="text-xs text-zinc-500 mt-0.5">Gerencie os departamentos de produtos do markethub</p>
+        </div>
         <button (click)="openForm()"
-          class="px-4 py-2 text-sm bg-amber-400 text-zinc-950 font-bold rounded-xl
-                 hover:bg-amber-300 transition-all">
+          class="px-4 py-1.5 bg-amazon-yellow hover:bg-amber-500 text-zinc-950 font-medium text-sm rounded border border-amber-500 hover:border-amber-600 shadow-sm transition-colors">
           + Nova categoria
         </button>
       </div>
 
-      <!-- FORMULÁRIO INLINE -->
       @if (showForm()) {
-        <div class="bg-zinc-900 border border-amber-400/30 rounded-2xl p-6 mb-6">
-          <h2 class="text-sm font-semibold text-white mb-4">
+        <div class="bg-white border border-zinc-200 rounded-md p-5 shadow-sm mb-6">
+          <h2 class="text-sm font-bold text-zinc-900 mb-4">
             {{ editingId() ? 'Editar categoria' : 'Nova categoria' }}
           </h2>
-          <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
-            <div>
-              <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">Nome</label>
-              <input formControlName="name" type="text"
-                class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
-                       focus:outline-none focus:border-amber-400 transition-all" />
+          <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col gap-4">
+            
+            <div class="flex flex-col gap-1">
+              <label class="text-xs font-bold text-zinc-700 uppercase tracking-wider">Nome</label>
+              <input formControlName="name" type="text" placeholder="Ex: Eletrônicos"
+                class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm
+                       focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
             </div>
-            <div>
-              <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">Descrição</label>
-              <input formControlName="description" type="text"
-                class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
-                       focus:outline-none focus:border-amber-400 transition-all" />
+
+            <div class="flex flex-col gap-1">
+              <label class="text-xs font-bold text-zinc-700 uppercase tracking-wider">Descrição</label>
+              <input formControlName="description" type="text" placeholder="Ex: Smartphones, notebooks e acessórios"
+                class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm
+                       focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
             </div>
 
             @if (formError()) {
-              <div class="px-4 py-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
+              <div class="px-4 py-2 bg-red-50 border border-red-200 rounded text-red-600 text-sm">
                 {{ formError() }}
               </div>
             }
 
-            <div class="flex gap-3">
+            <div class="flex gap-3 mt-2">
               <button type="button" (click)="closeForm()"
-                class="flex-1 py-2.5 border border-zinc-700 text-zinc-400 rounded-xl
-                       hover:border-zinc-500 hover:text-white transition-all text-sm">
+                class="flex-1 py-1.5 border border-zinc-300 text-zinc-700 rounded bg-zinc-50 hover:bg-zinc-100 transition-colors text-sm font-medium">
                 Cancelar
               </button>
               <button type="submit" [disabled]="formLoading() || form.invalid"
-                class="flex-1 py-2.5 bg-amber-400 text-zinc-950 font-bold rounded-xl
-                       hover:bg-amber-300 transition-all disabled:opacity-50 text-sm">
+                class="flex-1 py-1.5 bg-amazon-yellow hover:bg-amber-500 text-zinc-950 font-medium rounded border border-amber-500 hover:border-amber-600 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm">
                 @if (formLoading()) { Salvando... } @else { Salvar }
               </button>
             </div>
@@ -62,11 +63,10 @@ import { CategoryResponse } from '../../../models/index';
         </div>
       }
 
-      <!-- LISTA -->
       @if (loading()) {
         <div class="space-y-3">
           @for (n of [1,2,3]; track n) {
-            <div class="h-16 bg-zinc-900 rounded-xl animate-pulse border border-zinc-800"></div>
+            <div class="h-16 bg-white border border-zinc-200 rounded animate-pulse shadow-sm"></div>
           }
         </div>
       }
@@ -74,21 +74,19 @@ import { CategoryResponse } from '../../../models/index';
       @if (!loading()) {
         <div class="space-y-3">
           @for (cat of categories(); track cat.id) {
-            <div class="bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4
-                        flex items-center justify-between">
+            <div class="bg-white border border-zinc-200 rounded-md px-4 py-3 shadow-sm
+                        flex items-center justify-between gap-4 hover:border-zinc-300 transition-colors">
               <div>
-                <p class="text-white font-medium text-sm">{{ cat.name }}</p>
+                <p class="text-zinc-900 font-bold text-sm">{{ cat.name }}</p>
                 <p class="text-zinc-500 text-xs mt-0.5">{{ cat.description }}</p>
               </div>
-              <div class="flex gap-2">
+              <div class="flex gap-2 whitespace-nowrap">
                 <button (click)="editCategory(cat)"
-                  class="px-3 py-1.5 text-xs border border-zinc-700 text-zinc-400 rounded-lg
-                         hover:border-amber-400 hover:text-amber-400 transition-all">
+                  class="px-3 py-1 text-xs font-medium bg-white text-zinc-700 border border-zinc-300 rounded hover:bg-zinc-100 transition-colors">
                   Editar
                 </button>
                 <button (click)="deleteCategory(cat.id)"
-                  class="px-3 py-1.5 text-xs border border-zinc-700 text-zinc-400 rounded-lg
-                         hover:border-red-500 hover:text-red-400 transition-all">
+                  class="px-3 py-1 text-xs font-medium bg-white text-red-600 border border-zinc-300 rounded hover:border-red-400 hover:bg-red-50 transition-colors">
                   Excluir
                 </button>
               </div>
@@ -96,8 +94,8 @@ import { CategoryResponse } from '../../../models/index';
           }
 
           @if (categories().length === 0) {
-            <div class="text-center py-16">
-              <p class="text-zinc-600">Nenhuma categoria cadastrada</p>
+            <div class="text-center py-16 bg-white border border-zinc-200 rounded-md shadow-sm">
+              <p class="text-zinc-500 text-sm">Nenhuma categoria cadastrada</p>
             </div>
           }
         </div>

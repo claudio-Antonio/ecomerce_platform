@@ -10,110 +10,102 @@ import { switchMap, of } from 'rxjs';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
-    <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="max-w-6xl mx-auto px-4 py-8">
 
-      <div class="flex items-center justify-between mb-10">
-        <h1 class="text-4xl font-display font-black text-white tracking-tight">
-          Gerenciar produtos
-        </h1>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <div>
+          <h1 class="text-2xl font-normal text-zinc-900 tracking-tight">
+            Gerenciar produtos
+          </h1>
+          <p class="text-xs text-zinc-500 mt-0.5">Configure e atualize o catálogo do markethub</p>
+        </div>
         <button (click)="openForm()"
-          class="px-4 py-2 text-sm bg-amber-400 text-zinc-950 font-bold rounded-xl
-                 hover:bg-amber-300 transition-all">
+          class="px-4 py-1.5 bg-amazon-yellow hover:bg-amber-500 text-zinc-950 font-medium text-sm rounded border border-amber-500 hover:border-amber-600 shadow-sm transition-colors">
           + Novo produto
         </button>
       </div>
 
       @if (showForm()) {
-        <div class="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
-          <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 w-full max-w-lg
-                      max-h-[90vh] overflow-y-auto">
-            <h2 class="text-xl font-display font-black text-white mb-6">
+        <div class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4 backdrop-blur-xs">
+          <div class="bg-white border border-zinc-200 rounded-md p-6 w-full max-w-lg shadow-xl max-h-[90vh] overflow-y-auto">
+            <h2 class="text-lg font-bold text-zinc-900 mb-5 pb-2 border-b border-zinc-100">
               {{ editingId() ? 'Editar produto' : 'Novo produto' }}
             </h2>
 
-            <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+            <form [formGroup]="form" (ngSubmit)="submit()" class="flex flex-col gap-4">
 
-              <div>
-                <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">Nome</label>
-                <input formControlName="name" type="text"
-                  class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
-                         focus:outline-none focus:border-amber-400 transition-all" />
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-zinc-700 uppercase tracking-wider">Nome</label>
+                <input formControlName="name" type="text" placeholder="Ex: Echo Dot 5ª Geração"
+                  class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
               </div>
 
-              <div>
-                <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">Descrição</label>
-                <textarea formControlName="description" rows="3"
-                  class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
-                         focus:outline-none focus:border-amber-400 transition-all resize-none"></textarea>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-zinc-700 uppercase tracking-wider">Descrição</label>
+                <textarea formControlName="description" rows="3" placeholder="Insira os detalhes do produto..."
+                  class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm resize-none"></textarea>
               </div>
 
               <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">Preço (R$)</label>
+                <div class="flex flex-col gap-1">
+                  <label class="text-xs font-bold text-zinc-700 uppercase tracking-wider">Preço (R$)</label>
                   <input formControlName="price" type="number" step="0.01" min="0.01"
-                    class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
-                           focus:outline-none focus:border-amber-400 transition-all" />
+                    class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
                 </div>
-                <div>
-                  <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">Estoque</label>
+                <div class="flex flex-col gap-1">
+                  <label class="text-xs font-bold text-zinc-700 uppercase tracking-wider">Estoque</label>
                   <input formControlName="stockQuantity" type="number" min="0"
-                    class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
-                           focus:outline-none focus:border-amber-400 transition-all" />
+                    class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
                 </div>
               </div>
 
-              <div>
-                <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">SKU</label>
-                <input formControlName="sku" type="text"
-                  class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
-                         focus:outline-none focus:border-amber-400 transition-all" />
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-zinc-700 uppercase tracking-wider">SKU</label>
+                <input formControlName="sku" type="text" placeholder="Ex: ELEC-ECHO-05"
+                  class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
               </div>
 
-              <div>
-                <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">Categoria</label>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-zinc-700 uppercase tracking-wider">Categoria</label>
                 <input formControlName="category" type="text"
-                  placeholder="Digite o nome (ex: Livros) — criada automaticamente se não existir"
+                  placeholder="Digite o nome da categoria"
                   list="categorias-existentes"
-                  class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
-                         focus:outline-none focus:border-amber-400 transition-all" />
+                  class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
                 <datalist id="categorias-existentes">
                   @for (cat of categories(); track cat.id) {
                     <option [value]="cat.name"></option>
                   }
                 </datalist>
                 @if (categoryHint()) {
-                  <p class="text-xs text-amber-400/80 mt-1.5">{{ categoryHint() }}</p>
+                  <p class="text-xs text-amber-600 font-medium mt-1">{{ categoryHint() }}</p>
                 }
               </div>
 
-              <div>
-                <label class="block text-xs text-zinc-400 mb-1.5 uppercase tracking-wider">URL da imagem</label>
+              <div class="flex flex-col gap-1">
+                <label class="text-xs font-bold text-zinc-700 uppercase tracking-wider">URL da imagem</label>
                 <input formControlName="imageUrl" type="url" placeholder="https://exemplo.com/imagem.jpg"
-                  class="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white text-sm
-                        focus:outline-none focus:border-amber-400 transition-all" />
+                  class="w-full px-3 py-2 bg-white border border-zinc-400 rounded text-zinc-900 text-sm focus:outline-none focus:border-amazon-yellow focus:ring-1 focus:ring-amazon-yellow shadow-sm" />
               </div>
 
-              <div class="flex items-center gap-3">
+              <div class="flex items-center gap-2 mt-1">
                 <input formControlName="active" type="checkbox" id="active"
-                  class="w-4 h-4 rounded accent-amber-400" />
-                <label for="active" class="text-sm text-zinc-400">Produto ativo</label>
+                  class="w-4 h-4 rounded border-zinc-300 accent-amber-500 cursor-pointer" />
+                <label for="active" class="text-sm text-zinc-700 cursor-pointer select-none">Produto ativo no catálogo</label>
               </div>
 
               @if (formError()) {
-                <div class="px-4 py-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
+                <div class="px-4 py-2 bg-red-50 border border-red-200 rounded text-red-600 text-sm">
                   {{ formError() }}
                 </div>
               }
 
-              <div class="flex gap-3 pt-2">
+              <div class="flex gap-3 mt-3 pt-2 border-t border-zinc-100">
                 <button type="button" (click)="closeForm()"
-                  class="flex-1 py-3 border border-zinc-700 text-zinc-400 rounded-xl hover:border-zinc-500
-                         hover:text-white transition-all text-sm">
+                  class="flex-1 py-2 border border-zinc-300 text-zinc-700 rounded bg-zinc-50 hover:bg-zinc-100 transition-colors text-sm font-medium">
                   Cancelar
                 </button>
                 <button type="submit" [disabled]="formLoading() || form.invalid"
-                  class="flex-1 py-3 bg-amber-400 text-zinc-950 font-bold rounded-xl hover:bg-amber-300
-                         transition-all disabled:opacity-50 text-sm">
+                  class="flex-1 py-2 bg-amazon-yellow hover:bg-amber-500 text-zinc-950 font-medium rounded border border-amber-500 hover:border-amber-600 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm">
                   @if (formLoading()) { Salvando... } @else { Salvar }
                 </button>
               </div>
@@ -125,72 +117,82 @@ import { switchMap, of } from 'rxjs';
       @if (loading()) {
         <div class="space-y-3">
           @for (n of [1,2,3,4]; track n) {
-            <div class="h-16 bg-zinc-900 rounded-xl animate-pulse border border-zinc-800"></div>
+            <div class="h-16 bg-white border border-zinc-200 rounded animate-pulse shadow-sm"></div>
           }
         </div>
       }
 
       @if (!loading()) {
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="border-b border-zinc-800">
-                <th class="px-6 py-4 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider">Produto</th>
-                <th class="px-6 py-4 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider">Categoria</th>
-                <th class="px-6 py-4 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider">Preço</th>
-                <th class="px-6 py-4 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider">Estoque</th>
-                <th class="px-6 py-4 text-left text-xs font-medium text-zinc-500 uppercase tracking-wider">Status</th>
-                <th class="px-6 py-4 text-right text-xs font-medium text-zinc-500 uppercase tracking-wider">Ações</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-zinc-800">
-              @for (product of products(); track product.id) {
-                <tr class="hover:bg-zinc-800/50 transition-colors">
-                  <td class="px-6 py-4">
-                    <div>
-                      <p class="text-white font-medium">{{ product.name }}</p>
-                      <p class="text-zinc-600 text-xs mt-0.5">{{ product.sku }}</p>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-zinc-400">{{ product.categoryName ?? '—' }}</td>
-                  <td class="px-6 py-4 text-white font-semibold">
-                    {{ product.price | currency:'BRL':'symbol':'1.2-2' }}
-                  </td>
-                  <td class="px-6 py-4">
-                    <span [class]="product.availableQuantity > 0 ? 'text-green-400' : 'text-red-400'">
-                      {{ product.availableQuantity }}
-                    </span>
-                  </td>
-                  <td class="px-6 py-4">
-                    <span class="text-xs px-2 py-1 rounded-lg"
-                      [class]="product.active
-                        ? 'bg-green-500/10 text-green-400'
-                        : 'bg-zinc-800 text-zinc-500'">
-                      {{ product.active ? 'Ativo' : 'Inativo' }}
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 text-right">
-                    <div class="flex items-center justify-end gap-2">
-                      <button (click)="editProduct(product)"
-                        class="px-3 py-1.5 text-xs border border-zinc-700 text-zinc-400 rounded-lg
-                               hover:border-amber-400 hover:text-amber-400 transition-all">
-                        Editar
-                      </button>
-                      <button (click)="deleteProduct(product.id)"
-                        class="px-3 py-1.5 text-xs border border-zinc-700 text-zinc-400 rounded-lg
-                               hover:border-red-500 hover:text-red-400 transition-all">
-                        Excluir
-                      </button>
-                    </div>
-                  </td>
+        <div class="bg-white border border-zinc-200 rounded-md shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left border-collapse">
+              <thead>
+                <tr class="bg-zinc-50 border-b border-zinc-200 text-xs font-bold text-zinc-500 uppercase tracking-wider">
+                  <th class="px-6 py-3.5">Produto</th>
+                  <th class="px-6 py-3.5">Categoria</th>
+                  <th class="px-6 py-3.5">Preço</th>
+                  <th class="px-6 py-3.5">Estoque</th>
+                  <th class="px-6 py-3.5">Status</th>
+                  <th class="px-6 py-3.5 text-right">Ações</th>
                 </tr>
-              }
-            </tbody>
-          </table>
+              </thead>
+              <tbody class="divide-y divide-zinc-100">
+                @for (product of products(); track product.id) {
+                  <tr class="hover:bg-zinc-50/60 transition-colors text-zinc-700">
+                    
+                    <td class="px-6 py-4">
+                      <div class="font-bold text-zinc-900">{{ product.name }}</div>
+                      <div class="text-xs text-zinc-400 font-mono mt-0.5">SKU: {{ product.sku }}</div>
+                    </td>
+                    
+                    <td class="px-6 py-4 text-zinc-600">
+                      {{ product.categoryName ?? '—' }}
+                    </td>
+                    
+                    <td class="px-6 py-4 font-medium text-zinc-900">
+                      {{ product.price | currency:'BRL':'symbol':'1.2-2' }}
+                    </td>
+                    
+                    <td class="px-6 py-4">
+                      <span class="font-medium" [class]="product.availableQuantity > 0 ? 'text-zinc-900' : 'text-rose-600'">
+                        {{ product.availableQuantity }}
+                      </span>
+                    </td>
+                    
+                    <td class="px-6 py-4">
+                      <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-xs font-medium border"
+                        [class]="product.active
+                          ? 'bg-green-50 text-green-700 border-green-200'
+                          : 'bg-zinc-50 text-zinc-500 border-zinc-200'">
+                        @if (product.active) {
+                          <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                        }
+                        {{ product.active ? 'Ativo' : 'Inativo' }}
+                      </span>
+                    </td>
+                    
+                    <td class="px-6 py-4 text-right whitespace-nowrap">
+                      <div class="flex items-center justify-end gap-2">
+                        <button (click)="editProduct(product)"
+                          class="px-3 py-1 text-xs font-medium bg-white text-zinc-700 border border-zinc-300 rounded hover:bg-zinc-100 transition-colors">
+                          Editar
+                        </button>
+                        <button (click)="deleteProduct(product.id)"
+                          class="px-3 py-1 text-xs font-medium bg-white text-red-600 border border-zinc-300 rounded hover:border-red-400 hover:bg-red-50 transition-colors">
+                          Excluir
+                        </button>
+                      </div>
+                    </td>
+
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
 
           @if (products().length === 0) {
             <div class="text-center py-16">
-              <p class="text-zinc-600">Nenhum produto cadastrado</p>
+              <p class="text-zinc-500 text-sm">Nenhum produto cadastrado</p>
             </div>
           }
         </div>
@@ -222,7 +224,7 @@ export class AdminProductsComponent implements OnInit {
       sku:           ['', Validators.required],
       category:      ['', Validators.required],
       active:        [true],
-      imageUrl: ['', Validators.required]
+      imageUrl:      ['', Validators.required]
     });
   }
 
@@ -230,7 +232,6 @@ export class AdminProductsComponent implements OnInit {
     this.loadProducts();
     this.loadCategories();
 
-    // mostra dica em tempo real se a categoria digitada é nova
     this.form.get('category')?.valueChanges.subscribe(value => {
       const typed = (value ?? '').trim().toLowerCase();
       if (!typed) { this.categoryHint.set(''); return; }
@@ -281,11 +282,6 @@ export class AdminProductsComponent implements OnInit {
     this.editingId.set(null);
   }
 
-  /**
-   * Resolve o nome de categoria digitado para um categoryId real.
-   * Se já existir uma categoria com esse nome (case-insensitive), reusa o ID.
-   * Se não existir, cria a categoria na hora e usa o ID retornado.
-   */
   private resolveCategoryId(categoryName: string) {
     const typed = categoryName.trim();
     const existing = this.categories().find(

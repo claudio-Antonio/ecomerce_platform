@@ -69,12 +69,12 @@ public class ProductController {
         return ResponseEntity.ok().body(new ProductResponse(updatedProduct));
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "/{id}")
     @Operation(summary = "Delete product by id")
     @ApiResponse(responseCode = "204", description = "Product deleted successfully")
     @ApiResponse(responseCode = "404", description = "Not found, product not deleted")
     @ApiResponse(responseCode = "500", description = "Server error")
-    public ResponseEntity<Void> deleteProduct(@RequestParam UUID id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable UUID id) {
         productService.delete(id);
         return ResponseEntity.noContent().build();
     }

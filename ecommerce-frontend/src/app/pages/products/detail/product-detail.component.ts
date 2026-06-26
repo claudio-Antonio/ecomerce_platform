@@ -11,126 +11,120 @@ import { ProductResponse } from '../../../models/index';
   standalone: true,
   imports: [CommonModule, RouterLink, FormsModule],
   template: `
-    <div class="max-w-6xl mx-auto px-6 py-12">
+    <div class="max-w-7xl mx-auto px-4 py-8">
 
-      <a routerLink="/products"
-         class="inline-flex items-center gap-2 text-zinc-500 hover:text-white text-sm mb-8 transition-colors">
-        ← Voltar ao catálogo
-      </a>
+      <div class="mb-6">
+        <a routerLink="/products" class="text-sm text-blue-600 hover:text-amber-600 hover:underline">
+          ← Voltar ao catálogo
+        </a>
+      </div>
 
       @if (loading()) {
-        <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10">
-          <div class="bg-zinc-900 rounded-2xl h-96 animate-pulse border border-zinc-800"></div>
-          <div class="space-y-4">
-            <div class="h-6 bg-zinc-900 rounded-lg animate-pulse w-1/3"></div>
-            <div class="h-10 bg-zinc-900 rounded-lg animate-pulse"></div>
-            <div class="h-4 bg-zinc-900 rounded-lg animate-pulse w-2/3"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div class="lg:col-span-5 bg-white border border-zinc-200 rounded h-96 animate-pulse shadow-sm"></div>
+          <div class="lg:col-span-4 space-y-4">
+            <div class="h-6 bg-white border border-zinc-200 rounded animate-pulse w-1/3"></div>
+            <div class="h-10 bg-white border border-zinc-200 rounded animate-pulse"></div>
+            <div class="h-24 bg-white border border-zinc-200 rounded animate-pulse"></div>
           </div>
+          <div class="lg:col-span-3 bg-white border border-zinc-200 rounded h-48 animate-pulse shadow-sm"></div>
         </div>
       }
 
       @if (!loading() && error()) {
-        <div class="px-4 py-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
+        <div class="px-4 py-3 bg-red-50 border border-red-200 rounded text-red-600 text-sm mb-6">
           {{ error() }}
         </div>
       }
 
       @if (product() && !loading()) {
-        <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-          <!-- COLUNA ESQUERDA: GALERIA -->
-          <div>
-            <div class="bg-zinc-900 border border-zinc-800 rounded-2xl h-96 flex items-center justify-center overflow-hidden p-6">
-              @if (product()!.imageUrl) {
-                <img [src]="product()!.imageUrl" [alt]="product()!.name"
-                     class="max-w-full max-h-full object-contain"
-                     (error)="onImageError($event)" />
-              } @else {
-                <span class="text-8xl">🛍️</span>
-              }
-            </div>
+          <div class="lg:col-span-5 bg-white border border-zinc-200 rounded p-4 flex items-center justify-center min-h-[400px]">
+            @if (product()!.imageUrl) {
+              <img [src]="product()!.imageUrl" [alt]="product()!.name"
+                   class="max-w-full max-h-[380px] object-contain mix-blend-multiply"
+                   (error)="onImageError($event)" />
+            } @else {
+              <span class="text-8xl">🛍️</span>
+            }
           </div>
 
-          <!-- COLUNA DIREITA: INFORMAÇÕES + COMPRA -->
-          <div class="flex flex-col gap-5">
-
+          <div class="lg:col-span-4 flex flex-col gap-4">
             <div>
               @if (product()!.categoryName) {
-                <span class="text-xs text-amber-400 font-semibold uppercase tracking-wider">
+                <span class="text-xs text-zinc-500 font-bold uppercase tracking-wide">
                   {{ product()!.categoryName }}
                 </span>
               }
-              <h1 class="text-2xl font-display font-bold text-white tracking-tight mt-1 leading-snug">
+              <h1 class="text-2xl font-normal text-zinc-900 mt-1 leading-snug">
                 {{ product()!.name }}
               </h1>
+              <span class="text-xs text-zinc-400 block mt-1">SKU: {{ product()!.sku }}</span>
             </div>
 
-            <!-- PREÇO -->
+            <hr class="border-zinc-200" />
+
             <div>
-              <p class="text-xs text-zinc-500 mb-1">Preço</p>
-              <p class="text-3xl font-display font-black text-white">
-                {{ product()!.price | currency:'BRL':'symbol':'1.2-2' }}
+              <h4 class="text-sm font-bold text-zinc-900 mb-1">Sobre este item</h4>
+              <p class="text-sm text-zinc-700 leading-relaxed">
+                {{ product()!.description }}
               </p>
             </div>
+          </div>
 
-            <!-- DISPONIBILIDADE -->
+          <div class="lg:col-span-3 bg-white border border-zinc-200 rounded p-4 shadow-sm flex flex-col gap-4">
+            
             <div>
-              <span class="inline-flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-lg"
-                [class]="product()!.availableQuantity > 0
-                  ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-                  : 'bg-red-500/10 text-red-400 border border-red-500/20'">
-                <span class="w-1.5 h-1.5 rounded-full"
-                  [class]="product()!.availableQuantity > 0 ? 'bg-green-400' : 'bg-red-400'"></span>
-                {{ product()!.availableQuantity > 0
-                  ? 'Em estoque — ' + product()!.availableQuantity + ' disponíveis'
-                  : 'Esgotado' }}
+              <span class="text-3xl font-normal text-zinc-900">
+                {{ product()!.price | currency:'BRL':'symbol':'1.2-2' }}
               </span>
             </div>
 
-            <!-- CARD DE COMPRA -->
+            <div>
+              <span class="text-sm font-medium block"
+                [class]="product()!.availableQuantity > 0 ? 'text-green-600' : 'text-red-600'">
+                {{ product()!.availableQuantity > 0
+                  ? 'Em estoque — ' + product()!.availableQuantity + ' disponíveis'
+                  : 'Fora de estoque' }}
+              </span>
+            </div>
+
             @if (product()!.availableQuantity > 0) {
-              <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 flex flex-col gap-4">
-                <div class="flex items-center gap-3">
-                  <div class="flex items-center gap-2 bg-zinc-800 border border-zinc-700 rounded-xl p-1">
+              <div class="flex flex-col gap-3">
+                <div class="flex items-center gap-2 text-sm text-zinc-700">
+                  <span>Qtd:</span>
+                  <div class="flex items-center border border-zinc-300 rounded bg-zinc-50 shadow-sm">
                     <button (click)="decQty()" aria-label="diminuir quantidade"
-                      class="w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-white
-                             hover:bg-zinc-700 rounded-lg transition-colors text-lg font-bold">−</button>
-                    <span class="w-8 text-center text-white font-semibold text-sm">{{ qty }}</span>
+                      class="px-3 py-1 hover:bg-zinc-200 text-zinc-600 font-bold border-r border-zinc-300 transition-colors">−</button>
+                    <span class="px-4 font-medium text-zinc-800 text-sm">{{ qty }}</span>
                     <button (click)="incQty()" aria-label="aumentar quantidade"
-                      class="w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-white
-                             hover:bg-zinc-700 rounded-lg transition-colors text-lg font-bold">+</button>
+                      class="px-3 py-1 hover:bg-zinc-200 text-zinc-600 font-bold border-l border-zinc-300 transition-colors">+</button>
                   </div>
-                  <span class="text-xs text-zinc-500">
-                    Total: {{ (product()!.price * qty) | currency:'BRL':'symbol':'1.2-2' }}
-                  </span>
+                </div>
+
+                <div class="text-xs text-zinc-500">
+                  Total: <span class="font-bold text-zinc-800">{{ (product()!.price * qty) | currency:'BRL':'symbol':'1.2-2' }}</span>
                 </div>
 
                 <button (click)="buy()"
-                  class="w-full py-3 bg-amber-400 text-zinc-950 font-bold rounded-xl
-                         hover:bg-amber-300 transition-all text-sm tracking-wide">
+                  class="w-full py-2 bg-amazon-yellow hover:bg-amber-500 text-zinc-950 font-medium text-sm rounded border border-amber-500 hover:border-amber-600 shadow-sm transition-colors mt-1">
                   Comprar agora
                 </button>
               </div>
             }
 
             @if (feedbackMsg()) {
-              <div class="px-4 py-3 rounded-xl text-sm"
+              <div class="px-4 py-2 rounded text-sm mt-2"
                 [class]="feedbackOk()
-                  ? 'bg-green-500/10 border border-green-500/30 text-green-400'
-                  : 'bg-red-500/10 border border-red-500/30 text-red-400'">
+                  ? 'bg-green-50 border border-green-200 text-green-600'
+                  : 'bg-red-50 border border-red-200 text-red-600'">
                 {{ feedbackMsg() }}
               </div>
             }
 
-            <!-- DESCRIÇÃO -->
-            <div class="border-t border-zinc-800 pt-5">
-              <h2 class="text-sm font-semibold text-white mb-2">Sobre este item</h2>
-              <p class="text-sm text-zinc-400 leading-relaxed">
-                {{ product()!.description }}
-              </p>
-            </div>
-
           </div>
+
         </div>
       }
     </div>
